@@ -18,7 +18,7 @@ from interest_signals.models.errors import Code, FatalError, error
 from interest_signals.models.report import ReportContent
 from interest_signals.models.request import AnalysisRequest
 from interest_signals.models.result import AnalysisResult
-from interest_signals.output.render import report_template
+from interest_signals.output.render import content_from_flags, report_template
 from interest_signals.pipeline import runs
 from interest_signals.pipeline.analyze import RunOptions, render_run, run_analysis
 from interest_signals.providers.wikipedia.client import ApiError
@@ -41,7 +41,13 @@ def build_parser() -> argparse.ArgumentParser:
     p.add_argument("--parent", help="Previous run id; its request is the base.")
     p.add_argument("--render", help="Write the report of an existing run (no recomputation).")
     p.add_argument("--content", help="With --render: ReportContent JSON file, or '-' for stdin.")
-    p.add_argument("--content-json", help="With --render: ReportContent as one JSON argument.")
+    p.add_argument("--language", help="With --render: report language tag, e.g. en, uk, de.")
+    p.add_argument("--headline", help="With --render: analysis headline (one sentence).")
+    p.add_argument("--finding", action="append", default=[], help="With --render: one finding; repeat 1-4 times.")
+    p.add_argument("--recommendation", help="With --render: what to validate next.")
+    p.add_argument("--next-step", action="append", default=[], help="With --render: one next step; repeat 0-3 times.")
+    p.add_argument("--set", action="append", default=[], metavar="KEY=VALUE",
+                   help="With --render: translated entry, KEY from report-template.")
     p.add_argument("--format", nargs="+", action="extend", help="With --render: html, pdf or both (default).")
     p.add_argument("--out", help="With --render: report directory (default: current directory).")
     p.add_argument("--refresh", action="store_true", help="Ignore cached data and refetch.")
@@ -116,17 +122,21 @@ def template_command(argv: list[str]) -> Envelope:
     return Envelope(status="ok", summary={"run_id": result.run_id, "report_template": report_template(result)})
 
 
-def read_content(ref: str | None, inline: str | None) -> ReportContent:
-    if inline is not None:
-        text = inline
-    else:
-        text = sys.stdin.read() if ref == "-" else Path(ref or "").read_text(encoding="utf-8")
+REPORT_FLAGS = ("language", "headline", "finding", "recommendation", "next_step", "set")
+
+
+def read_content(args: argparse.Namespace) -> ReportContent | None:
     try:
-        return ReportContent.model_validate_json(text)
+        if args.content:
+            text = sys.stdin.read() if args.content == "-" else Path(args.content).read_text(encoding="utf-8")
+            return ReportContent.model_validate_json(text)
+        if any(getattr(args, f) for f in REPORT_FLAGS):
+            return ReportContent.model_validate(content_from_flags(
+                args.language, args.headline, args.finding, args.recommendation, args.next_step, args.set))
+        return None
     except ValidationError as exc:
         details = [f"{'.'.join(str(p) for p in e['loc'])}: {e['msg']}" for e in exc.errors()]
-        hint = "; ".join(details) + ". In the single-quoted --content-json argument write apostrophes as ’."
-        raise FatalError(error(Code.REPORT_CONTENT_INVALID, "Invalid report content.", hint)) from exc
+        raise FatalError(error(Code.REPORT_CONTENT_INVALID, "Invalid report content.", "; ".join(details))) from exc
 
 
 def parse_formats(values: list[str] | None) -> list[str] | None:
@@ -148,11 +158,10 @@ def execute(argv: list[str]) -> Envelope:
     if args.version:
         return Envelope(status="ok", summary={"version": __version__})
     if args.render:
-        has_content = args.content or args.content_json is not None
-        content = read_content(args.content, args.content_json) if has_content else None
+        content = read_content(args)
         return render_run(args.render, content, args.out, parse_formats(args.format))
-    if args.content or args.content_json or args.format or args.out:
-        raise FatalError(error(Code.INVALID_REQUEST, "--content, --content-json, --format and --out only apply to --render.",
+    if args.content or args.format or args.out or any(getattr(args, f) for f in REPORT_FLAGS):
+        raise FatalError(error(Code.INVALID_REQUEST, "Report options only apply to --render.",
                                "Run the analysis first; write a report with `--render <run_id>` when the user asks."))
     mode = "disabled" if args.no_cache else "refresh" if args.refresh else "normal"
     options = RunOptions(cache_mode=mode)

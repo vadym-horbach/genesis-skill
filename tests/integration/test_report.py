@@ -19,34 +19,22 @@ def analysis_run(capsys) -> dict:
     return env
 
 
-def ukrainian_content(template: dict, row: dict) -> dict:
-    views = f"{row['recent_views']:,.0f}".replace(",", " ")
-    content = dict(template)
-    content["language"] = "uk"
-    content["text"] = {k: f"[uk] {v}" for k, v in template["text"].items()}
-    content["warnings"] = [f"[uk] {w}" for w in template["warnings"]]
-    content["limitations"] = [f"[uk] {x}" for x in template["limitations"]]
-    content["details"] = {k: f"[uk] {v}" for k, v in template["details"].items()}
-    content["analysis"] = {
-        "headline": "Астрономія: стабільна увага без зростання",
-        "findings": [f"У {row['key'].split(':')[1]} близько {views} переглядів на місяць."],
-        "recommendation": "Спершу перевірити попит іншими даними.",
-        "next_steps": ["Порівняти з іншою темою."],
-    }
-    return content
-
-
-def test_template_then_localized_render(replay_env, capsys):
+def test_template_then_localized_render_with_flags(replay_env, capsys):
     env = analysis_run(capsys)
     run_id = env["summary"]["run_id"]
+    row = env["summary"]["per_topic_language"][0]
     _, tpl = run_cli(capsys, "report-template", run_id)
     template = tpl["summary"]["report_template"]
-    assert template["language"] == "en" and "title" in template["text"]
-    content = ukrainian_content(template, env["summary"]["per_topic_language"][0])
-    path = replay_env / "content.json"
-    path.write_text(json.dumps(content, ensure_ascii=False), encoding="utf-8")
-
-    code, rendered = run_cli(capsys, "--render", run_id, "--content", str(path))
+    assert template["text.scope_period"].startswith("Period <start>")
+    assert not any("{" in v for v in template.values() if isinstance(v, str) and v.startswith("Period"))
+    sets = [f"{k}=[uk] {v}" for k, v in template.items()]
+    views = f"{row['recent_views']:,.0f}".replace(",", " ")
+    args = ["--render", run_id, "--language", "uk", "--headline", "Астрономія: стабільна увага без зростання",
+            "--finding", f"У {row['key'].split(':')[1]} близько {views} переглядів на місяць.",
+            "--recommendation", "Спершу перевірити попит іншими даними.", "--next-step", "Порівняти з іншою темою."]
+    for item in sets:
+        args += ["--set", item]
+    code, rendered = run_cli(capsys, *args)
     assert code == 0, rendered
     assert "REPORT_UNTRANSLATED" not in {w["code"] for w in rendered["warnings"]}
     artifacts = rendered["summary"]["artifacts"]
@@ -54,12 +42,18 @@ def test_template_then_localized_render(replay_env, capsys):
     assert Path(artifacts["report_html"]).parent == replay_env
     assert '<html lang="uk">' in html and "Астрономія: стабільна увага" in html
     assert "<h1>[uk] Interest signals" in html and "<h2>Comparison</h2>" not in html
-    pdf = Path(artifacts["report_pdf"]).read_bytes()
-    assert b"/Count 1" in pdf
+    assert "[uk] Period 20" in html  # placeholders filled in the translation
+    assert b"/Count 1" in Path(artifacts["report_pdf"]).read_bytes()
 
     # a later render without content reuses the saved content
     _, again = run_cli(capsys, "--render", run_id, "--format", "html", "--out", str(replay_env / "out"))
     assert "Астрономія" in Path(again["summary"]["artifacts"]["report_html"]).read_text(encoding="utf-8")
+
+
+def test_bad_set_key(replay_env, capsys):
+    env = analysis_run(capsys)
+    code, out = run_cli(capsys, "--render", env["summary"]["run_id"], "--set", "nope.x=1")
+    assert code == 1 and out["errors"][0]["code"] == "REPORT_CONTENT_INVALID"
 
 
 def test_invented_number_is_rejected(replay_env, capsys):
@@ -83,15 +77,11 @@ def test_untranslated_parts_are_warned(replay_env, capsys, monkeypatch):
     assert code == 0 and "REPORT_UNTRANSLATED" in {w["code"] for w in out["warnings"]}
 
 
-def test_inline_content_and_repeated_format(replay_env, capsys):
+def test_repeated_format(replay_env, capsys):
     env = analysis_run(capsys)
-    content = {"language": "uk", "analysis": {"headline": "Інтерес м’який, без зростання", "findings": ["Факт."],
-                                                 "recommendation": "Порада."}}
-    code, out = run_cli(capsys, "--render", env["summary"]["run_id"], "--content-json",
-                        json.dumps(content, ensure_ascii=False), "--format", "html", "--format", "pdf")
+    code, out = run_cli(capsys, "--render", env["summary"]["run_id"], "--headline", "Інтерес м'який",
+                        "--finding", "Факт.", "--recommendation", "Порада.", "--format", "html", "--format", "pdf")
     assert code == 0 and set(out["summary"]["artifacts"]) == {"report_html", "report_pdf"}
-    code, bad = run_cli(capsys, "--render", env["summary"]["run_id"], "--content-json", "{broken")
-    assert code == 1 and "apostrophes" in bad["errors"][0]["hint"]
 
 
 def test_english_render_needs_only_analysis(replay_env, capsys):

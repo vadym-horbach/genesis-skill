@@ -35,11 +35,11 @@ Optional environment variables:
 python3 scripts/analyze.py --topic "astronomy" --languages uk --months 24
 python3 scripts/analyze.py --parent <run_id> --add-languages de
 python3 scripts/analyze.py report-template <run_id>          # report content to fill/translate
-python3 scripts/analyze.py --render <run_id> --content c.json --format pdf
+python3 scripts/analyze.py --render <run_id> --headline "..." --finding "..." --recommendation "..." --format pdf
 python3 scripts/analyze.py cache status
 ```
 
-An analysis writes no files. Its pinned request and canonical result (`AnalysisResult`) go to the `runs` table of the cache database (`cache.sqlite`, kept 30 days) for follow-ups and rendering. Reports are written only by `--render`, into the current directory or `--out DIR`, as `interest-signals-<topics>-<id>.html/.pdf`. `--content` adds the agent's analysis and the report language; every number in it must come from the result, or the render is rejected. Without `--content` the report is English with no analysis section.
+An analysis writes no files. Its pinned request and canonical result (`AnalysisResult`) go to the `runs` table of the cache database (`cache.sqlite`, kept 30 days) for follow-ups and rendering. Reports are written only by `--render`, into the current directory or `--out DIR`, as `interest-signals-<topics>-<id>.html/.pdf`. `--headline`/`--finding`/`--recommendation`/`--next-step`, `--language` and `--set KEY=VALUE` (or `--content FILE` with JSON) add the analysis and the report language; every number in it must come from the result, or the render is rejected. Without them the report is English with no analysis section.
 
 ## Layout
 

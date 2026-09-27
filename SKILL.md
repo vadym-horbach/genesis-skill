@@ -70,15 +70,12 @@ Each run prints `summary.run_id`. For a follow-up, pass `--parent <run_id>` plus
 
 Only on the user's request. The report carries **your analysis** in the **report language**: the language the user names for the report, otherwise the language of the user's messages.
 
-1. `python3 <skill>/scripts/analyze.py report-template <run_id>` prints `summary.report_template`: the report content prefilled in English.
-2. Write the content:
-   - `language`: tag of the report language (`en`, `uk`, `de`, ...).
-   - `analysis`: `headline` (one sentence), `findings` (1-4 sentences comparing topics and editions), `recommendation` (what to validate next, in the label vocabulary, with the market-data caveat), `next_steps` (0-3). Every number comes from the envelope `summary`; rounding to thousands or millions is fine, new arithmetic (ratios, sums) is rejected.
-   - Report language other than English: translate every value of `text` (keep `{placeholders}`), `topics`, `entities`, `warnings`, `limitations`, and optionally `details`. English: send only `language` and `analysis`.
-3. Render into the user's directory. Pass the content as one single-quoted JSON argument on one line; write apostrophes inside it as `’`:
+1. Write the analysis: `--headline` (one sentence), `--finding` (repeat 1-4 times: compare topics and editions), `--recommendation` (what to validate next, in the label vocabulary, with the market-data caveat), `--next-step` (repeat 0-3 times). Every number comes from the envelope `summary`; rounding to thousands or millions is fine, new arithmetic (ratios, sums) is rejected.
+2. Report language other than English: `python3 <skill>/scripts/analyze.py report-template <run_id>` prints `summary.report_template`, the English value of every entry by key. Translate each one into a `--set KEY="..."` argument and keep `<placeholders>` unchanged (`detail.*` keys are optional). Skip this step for English.
+3. Render into the user's directory as one command, double-quoted values:
 
 ```bash
-python3 <skill>/scripts/analyze.py --render <run_id> --content-json '{"language": "en", "analysis": {"headline": "...", "findings": ["..."], "recommendation": "...", "next_steps": []}}'
+python3 <skill>/scripts/analyze.py --render <run_id> --language uk --headline "..." --finding "..." --finding "..." --recommendation "..." --next-step "..." --set text.title="..." --set topic.t1="..."
 ```
 
 `--format pdf` or `--format html` limits the formats (default both); `--out DIR` when the user names a folder. Give the user `summary.artifacts.report_pdf` / `report_html`.

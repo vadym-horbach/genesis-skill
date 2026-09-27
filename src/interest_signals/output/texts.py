@@ -1,10 +1,13 @@
 """Report interface text. English is the default; ReportContent.text overrides any key.
 
-Placeholders in braces are filled by code and must be kept in translations.
+Placeholders in angle brackets (`<start>`) are filled by code and must be kept in translations.
+Angle brackets, not braces: agents pass translations on the command line, and Claude Code
+asks for approval on commands that mix braces and quotes.
 """
 
 from __future__ import annotations
 
+import re
 from typing import Any
 
 from interest_signals.models.report import ReportContent
@@ -16,10 +19,10 @@ ENGLISH: dict[str, str] = {
     "recommendation": "Recommendation",
     "next_steps": "Next steps",
     "scope": "What was analyzed",
-    "scope_period": "Period {start} to {end} ({months} complete months). Language editions: {languages}.",
+    "scope_period": "Period <start> to <end> (<months> complete months). Language editions: <languages>.",
     "scope_traffic": "Traffic: human users (agent=user), all access, monthly. Source: Wikimedia Analytics API.",
     "auto_selected": "auto-selected; check it is the intended article",
-    "no_article": "No article in: {projects}.",
+    "no_article": "No article in: <projects>.",
     "comparison": "Comparison",
     "col_topic": "Topic",
     "col_edition": "Edition",
@@ -34,27 +37,30 @@ ENGLISH: dict[str, str] = {
     "col_label": "Label",
     "col_score": "Score*",
     "pareto_note": "● not dominated on scale, relative attention, normalized growth and consistency (Pareto front).",
-    "score_note": "* Score = your weights {weights} over rank percentiles; it reflects your preferences, "
+    "score_note": "* Score = your weights <weights> over rank percentiles; it reflects your preferences, "
     "not an objective truth.",
     "details": "Details by topic and edition",
     "charts": "Charts",
     "chart_relative": "Relative attention: views per 1M views of the language edition (dashed: trend, ▲ spike)",
-    "chart_raw": "{series}: monthly views",
+    "chart_raw": "<series>: monthly views",
     "warnings": "Warnings",
     "none": "none",
-    "more_warnings": "... {count} more in analysis.json",
+    "more_warnings": "... <count> more in analysis.json",
     "limitations": "Limitations",
-    "footer": "Run {run_id} · cache: {hits} hits, {fetched} fetched, {http} HTTP requests · "
-    "interest-signals {version}, methodology {methodology}",
+    "footer": "Run <run_id> · cache: <hits> hits, <fetched> fetched, <http> HTTP requests · "
+    "interest-signals <version>, methodology <methodology>",
     "not_available": "n/a",
-    "label_candidate for further validation": "candidate for further validation",
+    "label_candidate_for_further_validation": "candidate for further validation",
     "label_monitor": "monitor",
-    "label_weaker signal": "weaker signal",
-    "label_insufficient evidence": "insufficient evidence",
+    "label_weaker_signal": "weaker signal",
+    "label_insufficient_evidence": "insufficient evidence",
     "evidence_high": "high",
     "evidence_medium": "medium",
     "evidence_low": "low",
 }
+
+
+PLACEHOLDER = re.compile(r"<(\w+)>")
 
 
 class Texts:
@@ -66,18 +72,15 @@ class Texts:
 
     def __call__(self, key: str, **fields: Any) -> str:
         text = self.values[key]
-        if not fields:
-            return text
-        try:
-            return text.format(**fields)
-        except (KeyError, IndexError, ValueError):  # a translation broke a placeholder
-            return ENGLISH[key].format(**fields)
+        if set(PLACEHOLDER.findall(text)) != set(PLACEHOLDER.findall(ENGLISH[key])):
+            text = ENGLISH[key]  # a translation broke a placeholder
+        return PLACEHOLDER.sub(lambda m: str(fields.get(m.group(1), m.group(0))), text)
 
     def missing_keys(self) -> list[str]:
         return [] if self.content.is_english else sorted(set(ENGLISH) - set(self.content.text))
 
     def label(self, value: str) -> str:
-        return self.values.get(f"label_{value}", value)
+        return self.values.get("label_" + value.replace(" ", "_"), value)
 
     def evidence(self, value: str) -> str:
         return self.values.get(f"evidence_{value}", value)
