@@ -38,6 +38,7 @@ Key conventions:
     "DEPENDENCY_INSTALL_FAILED",
     "PYTHON_VENV_UNAVAILABLE",
     "INTERNAL_ERROR",
+    "REPORT_CONTENT_INVALID",
     "AMBIGUOUS_TOPIC",
     "UNSUPPORTED_LANGUAGE",
     "UNSUPPORTED_DIMENSION",
@@ -54,7 +55,9 @@ Key conventions:
     "CLUSTER_DOMINATED_BY_ENTITY",
     "REDIRECTS_TRUNCATED",
     "PARTIAL_SEASONAL_CYCLE",
-    "UA_CONTACT_MISSING"
+    "UA_CONTACT_MISSING",
+    "REPORT_UNTRANSLATED",
+    "REPORT_PDF_GLYPHS_MISSING"
    ],
    "title": "Code",
    "type": "string"
@@ -117,18 +120,6 @@ Key conventions:
    "default": "0.1.0",
    "title": "Tool Version",
    "type": "string"
-  },
-  "run_dir": {
-   "anyOf": [
-    {
-     "type": "string"
-    },
-    {
-     "type": "null"
-    }
-   ],
-   "default": null,
-   "title": "Run Dir"
   },
   "summary": {
    "anyOf": [
@@ -327,17 +318,6 @@ Key conventions:
     }
    ],
    "default": null
-  },
-  "formats": {
-   "items": {
-    "enum": [
-     "html",
-     "pdf"
-    ],
-    "type": "string"
-   },
-   "title": "Formats",
-   "type": "array"
   }
  },
  "required": [
@@ -557,6 +537,7 @@ Key conventions:
     "DEPENDENCY_INSTALL_FAILED",
     "PYTHON_VENV_UNAVAILABLE",
     "INTERNAL_ERROR",
+    "REPORT_CONTENT_INVALID",
     "AMBIGUOUS_TOPIC",
     "UNSUPPORTED_LANGUAGE",
     "UNSUPPORTED_DIMENSION",
@@ -573,7 +554,9 @@ Key conventions:
     "CLUSTER_DOMINATED_BY_ENTITY",
     "REDIRECTS_TRUNCATED",
     "PARTIAL_SEASONAL_CYCLE",
-    "UA_CONTACT_MISSING"
+    "UA_CONTACT_MISSING",
+    "REPORT_UNTRANSLATED",
+    "REPORT_PDF_GLYPHS_MISSING"
    ],
    "title": "Code",
    "type": "string"

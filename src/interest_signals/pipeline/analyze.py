@@ -1,4 +1,5 @@
-"""One request runs the whole pipeline: resolve -> fetch -> metrics -> result -> artifacts."""
+"""One request runs the whole pipeline: resolve -> fetch -> metrics -> result. Reports are
+rendered separately, only on request (`render_run`)."""
 
 from __future__ import annotations
 
@@ -16,6 +17,7 @@ from interest_signals.analysis.periods import resolve_period
 from interest_signals.cache.store import CacheStore
 from interest_signals.models.envelope import Envelope
 from interest_signals.models.errors import Code, FatalError, IssueLog, error
+from interest_signals.models.report import ReportContent
 from interest_signals.models.request import AnalysisRequest, TitleRef, TopicSpec
 from interest_signals.models.result import (
     AnalysisResult,
@@ -50,10 +52,8 @@ LIMITATIONS = [
 @dataclass
 class RunOptions:
     cache_mode: str = "normal"
-    out: str | None = None
     parent_run_id: str | None = None
     request_version: int = 1
-    formats: list[str] | None = None
 
 
 def check_request(request: AnalysisRequest, log: IssueLog) -> list[str]:
@@ -213,9 +213,7 @@ def run_analysis(request: AnalysisRequest, options: RunOptions, provider: Wikipe
         for m in metrics
     ]
 
-    base = runs.runs_dir(options.out)
     run_id = runs.new_run_id()
-    run_dir = runs.create_run_dir(base, run_id)
     request_payload = normalized_request(request, resolutions, languages, period.end)
     plan_by_topic = {p.resolution.topic_id: p for p in plans}
     scope = Scope(
@@ -247,25 +245,28 @@ def run_analysis(request: AnalysisRequest, options: RunOptions, provider: Wikipe
         ),
         limitations=LIMITATIONS,
     )
-    runs.write_json(run_dir / "request.json", request_payload)
-    (run_dir / "analysis.json").write_text(result.model_dump_json(indent=2, by_alias=True))
-    artifacts = render.render_all(result, run_dir, options.formats or request.formats)
+    store = runs.RunStore()
+    store.save(run_id, options.parent_run_id, request_payload, result.model_dump_json(by_alias=True))
+    store.close()
     cache.close()
-    return Envelope(
-        status="ok", run_dir=str(run_dir), summary=result_summary(result, artifacts), warnings=all_issues,
-    )
+    return Envelope(status="ok", summary=result_summary(result), warnings=all_issues)
 
 
-def render_run(run_ref: str, options: RunOptions) -> Envelope:
-    run_dir = runs.find_run(run_ref, runs.runs_dir(options.out))
-    path = run_dir / "analysis.json"
-    if not path.exists():
-        raise FatalError(error(Code.RUN_NOT_FOUND, f"{path} does not exist.", "Run the analysis first."))
-    result = AnalysisResult.model_validate_json(path.read_text())
-    formats = options.formats or result.request.get("formats") or ["html", "pdf"]
-    artifacts = render.render_all(result, run_dir, formats)
-    return Envelope(status="ok", run_dir=str(run_dir), summary=result_summary(result, artifacts),
-                    warnings=result.warnings)
+def render_run(
+    run_id: str, content: ReportContent | None, out: str | None, formats: list[str] | None
+) -> Envelope:
+    """Write the report of an existing run into `out` (default: current directory). Without new
+    content, the content of the previous render of this run is reused."""
+    store = runs.RunStore()
+    result = AnalysisResult.model_validate_json(store.analysis_json(run_id))
+    if content is None:
+        saved = store.report_content_json(run_id)
+        content = ReportContent.model_validate_json(saved) if saved else None
+    artifacts, issues = render.render_report(result, content, Path(out or ".").resolve(), formats or ["html", "pdf"])
+    if content is not None:
+        store.save_report_content(run_id, content.model_dump_json())
+    store.close()
+    return Envelope(status="ok", summary=result_summary(result, artifacts), warnings=[*issues, *result.warnings])
 
 
 def setup_debug_log(path: Path) -> None:

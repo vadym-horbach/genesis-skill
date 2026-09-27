@@ -1,9 +1,9 @@
 <!doctype html>
-<html lang="en">
+<html lang="{{ lang }}">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Interest signals report</title>
+<title>{{ t("title") }}</title>
 <style>
   :root { --fg:#1d232b; --muted:#5b6571; --line:#dde2e8; --accent:#2a6fdb; --bg:#ffffff; --warn:#8a5a00; }
   * { box-sizing:border-box; }
@@ -21,6 +21,9 @@
   ul { margin:2px 0 0 16px; padding:0; }
   li { margin:1px 0; }
   .warn li { color:var(--warn); }
+  .analysis { border-left:3px solid var(--accent); padding:2px 0 2px 8px; margin:6px 0; }
+  .headline { font-size:13px; font-weight:600; margin:0 0 4px; }
+  h3 { font-size:11px; margin:6px 0 2px; }
   footer { margin-top:8px; font-size:10px; color:var(--muted); }
   @media print {
     @page { size:A4; margin:8mm; }
@@ -30,67 +33,75 @@
 </style>
 </head>
 <body>
-<h1>Interest signals: Wikipedia attention by language</h1>
+<h1>{{ t("title") }}</h1>
 
-<h2>What was analyzed</h2>
-<div>
-  Period <b>{{ r.scope.period.start }}</b> to <b>{{ r.scope.period.end }}</b> ({{ r.scope.period.months }} complete months).
-  Language editions: {{ r.scope.languages | join(", ") }}.
-  Traffic: human users (agent=user), all access, monthly; source: Wikimedia Analytics API.
+{% if analysis %}
+<h2>{{ t("analysis") }}</h2>
+<div class="analysis">
+  <p class="headline">{{ analysis.headline }}</p>
+  <h3>{{ t("findings") }}</h3>
+  <ul>{% for f in analysis.findings %}<li>{{ f }}</li>{% endfor %}</ul>
+  <h3>{{ t("recommendation") }}</h3>
+  <div>{{ analysis.recommendation }}</div>
+  {% if analysis.next_steps %}
+  <h3>{{ t("next_steps") }}</h3>
+  <ul>{% for s in analysis.next_steps %}<li>{{ s }}</li>{% endfor %}</ul>
+  {% endif %}
 </div>
+{% endif %}
+
+<h2>{{ t("scope") }}</h2>
+<div>{{ scope_period }} {{ t("scope_traffic") }}</div>
 <ul>
-{% for t in r.scope.topics %}
-  <li><b>{{ t.query }}</b>: {% for e in t.cluster %}{{ e.label }} ({{ e.key }}){% if not loop.last %}, {% endif %}{% endfor %}
-    {% if t.auto_selected %}<span class="muted">(auto-selected; check it is the intended article)</span>{% endif %}
-    {% set missing = t.coverage | selectattr("status", "equalto", "missing") | map(attribute="project") | list %}
-    {% if missing %}<span class="muted">No article in: {{ missing | join(", ") }}.</span>{% endif %}
+{% for tp in topics %}
+  <li><b>{{ tp.name }}</b>: {{ tp.cluster | join(", ") }}
+    {% if tp.auto_selected %}<span class="muted">({{ t("auto_selected") }})</span>{% endif %}
+    {% if tp.missing %}<span class="muted">{{ t("no_article", projects=tp.missing | join(", ")) }}</span>{% endif %}
   </li>
 {% endfor %}
 </ul>
 
-<h2>Comparison</h2>
+<h2>{{ t("comparison") }}</h2>
 <table>
-  <tr><th>Topic</th><th>Edition</th><th class="num">Views/month</th><th class="num">Per 1M views</th>
-      <th class="num">YoY (normalized)</th><th class="num">YoY (raw)</th><th class="num">Trend/year</th>
-      <th class="num">Rising windows</th><th class="num">Spikes</th><th>Evidence</th><th>Label</th>
-      {% if r.comparison.weighted %}<th class="num">Score*</th>{% endif %}</tr>
+  <tr><th>{{ t("col_topic") }}</th><th>{{ t("col_edition") }}</th><th class="num">{{ t("col_views") }}</th>
+      <th class="num">{{ t("col_per_million") }}</th><th class="num">{{ t("col_yoy") }}</th>
+      <th class="num">{{ t("col_yoy_raw") }}</th><th class="num">{{ t("col_trend") }}</th>
+      <th class="num">{{ t("col_rising") }}</th><th class="num">{{ t("col_spikes") }}</th>
+      <th>{{ t("col_evidence") }}</th><th>{{ t("col_label") }}</th>
+      {% if r.comparison.weighted %}<th class="num">{{ t("col_score") }}</th>{% endif %}</tr>
   {% for row in rows %}
   <tr>
-    <td>{{ row.topic }}</td><td>{{ row.project }}{% if row.pareto %} <span class="pareto" title="not dominated">●</span>{% endif %}</td>
+    <td>{{ row.topic }}</td><td>{{ row.project }}{% if row.pareto %} <span class="pareto">●</span>{% endif %}</td>
     <td class="num">{{ row.scale }}</td><td class="num">{{ row.relative }}</td>
     <td class="num">{{ row.yoy }}</td><td class="num">{{ row.yoy_raw }}</td><td class="num">{{ row.trend }}</td>
     <td class="num">{{ row.consistency }}</td><td class="num">{{ row.spikes }}</td>
     <td>{{ row.evidence }}</td><td class="label">{{ row.label }}</td>
-    {% if r.comparison.weighted %}<td class="num">{{ row.score if row.score is not none else "n/a" }}</td>{% endif %}
+    {% if r.comparison.weighted %}<td class="num">{{ row.score }}</td>{% endif %}
   </tr>
   {% endfor %}
 </table>
-<div class="muted">● not dominated on scale, relative attention, normalized growth and consistency (Pareto front).
-{% if r.comparison.weighted %}* Score = your weights {{ r.comparison.weighted.weights }} over rank percentiles; it reflects your preferences, not an objective truth.{% endif %}</div>
+<div class="muted">{{ t("pareto_note") }}{% if score_note %} {{ score_note }}{% endif %}</div>
 
-<h2>Why</h2>
+<h2>{{ t("charts") }}</h2>
+<img src="{{ charts.relative_attention }}" alt="{{ t('chart_relative') }}">
+<img src="{{ charts.raw_views }}" alt="{{ t('charts') }}">
+
+{% if has_details %}
+<h2>{{ t("details") }}</h2>
 <ul>
-{% for row in rows %}<li>{{ row.rationale | join(" ") }}</li>{% endfor %}
+{% for row in rows if row.detail %}<li><b>{{ row.topic }}, {{ row.project }}:</b> {{ row.detail }}</li>{% endfor %}
 </ul>
+{% endif %}
 
-<h2>Charts</h2>
-<img src="{{ charts.relative_attention }}" alt="Relative attention per language">
-<img src="{{ charts.raw_views }}" alt="Monthly views per language">
-
-<h2>Warnings</h2>
+<h2>{{ t("warnings") }}</h2>
 <ul class="warn">
-{% for w in warnings %}<li>[{{ w.code.value }}] {{ w.message }}</li>{% else %}<li class="muted">none</li>{% endfor %}
-{% if warnings_truncated %}<li class="muted">... {{ warnings_truncated }} more in analysis.json</li>{% endif %}
+{% for w in warnings %}<li>{{ w }}</li>{% else %}<li class="muted">{{ t("none") }}</li>{% endfor %}
+{% if warnings_truncated %}<li class="muted">{{ t("more_warnings", count=warnings_truncated) }}</li>{% endif %}
 </ul>
 
-<h2>Limitations</h2>
-<ul>{% for x in r.limitations %}<li>{{ x }}</li>{% endfor %}</ul>
+<h2>{{ t("limitations") }}</h2>
+<ul>{% for x in limitations %}<li>{{ x }}</li>{% endfor %}</ul>
 
-<footer>
-  Run {{ r.run_id }}{% if r.parent_run_id %} (follow-up of {{ r.parent_run_id }}){% endif %} ·
-  cache {{ r.cache.mode }}: {{ r.cache.hits }} hits, {{ r.cache.fetched }} fetched, {{ r.cache.http_requests }} HTTP requests
-  {% if r.cache.oldest_observation_fetched_at %}· oldest cached data {{ r.cache.oldest_observation_fetched_at[:10] }}{% endif %}
-  · interest-signals {{ r.tool_version }}, methodology {{ r.methodology_version }}
-</footer>
+<footer>{{ footer }}</footer>
 </body>
 </html>

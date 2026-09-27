@@ -9,6 +9,7 @@ import pytest
 
 from interest_signals import cli
 from interest_signals.models.result import AnalysisResult
+from interest_signals.pipeline.runs import RunStore
 
 
 def run_cli(capsys, *args: str) -> tuple[int, dict]:
@@ -21,7 +22,11 @@ def codes(items) -> set[str]:
 
 
 def load_result(envelope) -> AnalysisResult:
-    return AnalysisResult.model_validate_json(Path(envelope["summary"]["artifacts"]["analysis"]).read_text())
+    return AnalysisResult.model_validate_json(RunStore().analysis_json(envelope["summary"]["run_id"]))
+
+
+def load_request(envelope) -> dict:
+    return RunStore().request(envelope["summary"]["run_id"])
 
 
 def test_fasting_polish_czech_full_pipeline(replay_env, capsys):
@@ -34,19 +39,20 @@ def test_fasting_polish_czech_full_pipeline(replay_env, capsys):
     result = load_result(env)
     coverage = {c.project: c.status for c in result.scope.topics[0].coverage}
     assert coverage["pl.wikipedia"] == "missing" and coverage["cs.wikipedia"] == "fetched"
-    for name in ("analysis", "request", "report_html", "report_pdf", "chart_relative_attention"):
-        assert Path(s["artifacts"][name]).exists(), name
+    assert "artifacts" not in s  # no report unless asked
+    assert list(replay_env.glob("*.html")) == [] and list(replay_env.glob("*.pdf")) == []
     row = s["per_topic_language"][0]
     m = result.metric("t1", "cs.wikipedia")
     assert row["recent_views"] == round(m.recent_views)
     assert any(f"{m.recent_views:,.0f}" in sentence for sentence in row["rationale"])
-    request = json.loads(Path(s["artifacts"]["request"]).read_text())
+    request = load_request(env)
     assert request["topics"][0]["qids"] == ["Q1666254"]
 
 
 def test_pdf_is_single_page(replay_env, capsys):
     _, env = run_cli(capsys, "--topic", "astronomy", "--languages", "uk", "de", "--no-cache")
-    pdf = Path(env["summary"]["artifacts"]["report_pdf"]).read_bytes()
+    _, rendered = run_cli(capsys, "--render", env["summary"]["run_id"], "--format", "pdf")
+    pdf = Path(rendered["summary"]["artifacts"]["report_pdf"]).read_bytes()
     assert pdf.count(b"/Type /Page\n") + pdf.count(b"/Type /Page ") + pdf.count(b"/Type /Page/") <= 1
     assert b"/Count 1" in pdf
 
@@ -57,7 +63,7 @@ def test_ambiguous_topic_returns_candidates_without_fetch(replay_env, capsys):
     assert codes(env["errors"]) == {"AMBIGUOUS_TOPIC"}
     labels = [c["label"].lower() for c in env["candidates"][0]["candidates"]]
     assert "mercury" in labels and "freddie mercury" in labels
-    assert env["run_dir"] is None
+    assert "run_id" not in env["summary"]
 
 
 def test_broad_topic_is_not_auto_clustered(replay_env, capsys):
@@ -140,13 +146,17 @@ def test_follow_ups_reuse_cache_and_version_requests(replay_env, capsys):
 
 
 def test_render_only_does_not_recompute(replay_env, capsys, monkeypatch):
-    _, env = run_cli(capsys, "--topic", "astronomy", "--languages", "uk", "--no-cache", "--format", "html")
-    run_dir = env["run_dir"]
+    _, env = run_cli(capsys, "--topic", "astronomy", "--languages", "uk", "--no-cache")
     import interest_signals.analysis.metrics as metrics
 
     monkeypatch.setattr(metrics, "compute_pair_metrics", lambda *a: pytest.fail("recomputed"))
-    code, rendered = run_cli(capsys, "--render", run_dir, "--format", "pdf")
+    code, rendered = run_cli(capsys, "--render", env["summary"]["run_id"], "--format", "pdf")
     assert code == 0 and Path(rendered["summary"]["artifacts"]["report_pdf"]).exists()
+
+
+def test_report_options_need_render(replay_env, capsys):
+    code, env = run_cli(capsys, "--topic", "astronomy", "--languages", "uk", "--format", "pdf")
+    assert code == 1 and codes(env["errors"]) == {"INVALID_REQUEST"}
 
 
 def test_unknown_run(replay_env, capsys):
@@ -188,7 +198,7 @@ def test_single_entity_without_article_in_languages_is_empty_cluster(replay_env,
 def test_changed_cluster_is_recomputed_from_cache(replay_env, capsys):
     _, first = run_cli(capsys, "--qids", "Q1666254", "--languages", "cs")
     request = replay_env / "changed.json"
-    base = json.loads(Path(first["summary"]["artifacts"]["request"]).read_text())
+    base = load_request(first)
     base["topics"][0]["qids"] = ["Q1666254", "Q44602"]
     request.write_text(json.dumps(base))
     _, second = run_cli(capsys, "--request", str(request), "--parent", first["summary"]["run_id"])
@@ -201,7 +211,7 @@ def test_changed_cluster_is_recomputed_from_cache(replay_env, capsys):
 def test_follow_up_after_default_languages_keeps_them(replay_env, capsys):
     _, first = run_cli(capsys, "--qids", "Q333", "--no-cache")
     assert len(first["summary"]["languages"]) == 10
-    pinned = json.loads(Path(first["summary"]["artifacts"]["request"]).read_text())
+    pinned = load_request(first)
     assert pinned["languages"] == first["summary"]["languages"]
     assert pinned["end_month"] == "2026-08"
     run_cli(capsys, "--qids", "Q333")  # warm the cache for the follow-up

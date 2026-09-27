@@ -77,7 +77,7 @@ def test_request_defaults_and_topic_ids():
     r = AnalysisRequest.model_validate({"topics": [{"query": "a"}, {"qids": ["q42"]}], "languages": ["PL"]})
     assert [t.topic_id for t in r.topics] == ["t1", "t2"]
     assert r.topics[1].qids == ["Q42"]
-    assert r.languages == ["pl"] and r.months == 24 and r.formats == ["html", "pdf"]
+    assert r.languages == ["pl"] and r.months == 24
 
 
 def test_request_countries_add_dimension():

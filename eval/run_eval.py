@@ -19,6 +19,7 @@ import json
 import os
 import re
 import shutil
+import sqlite3
 import subprocess
 import sys
 import tempfile
@@ -67,10 +68,23 @@ def run_turn(ws: Path, prompt: str, model: str, session: str | None, env: dict[s
     return {"commands": commands, "answer": answer, "session": session_id, "stderr": proc.stderr[-2000:]}
 
 
-def latest_runs(runs_dir: Path) -> list[Path]:
-    if not runs_dir.exists():
+def latest_runs(cache_dir: Path) -> list[dict[str, Any]]:
+    """Run state from the `runs` table of the skill's cache database, oldest first."""
+    db = cache_dir / "cache.sqlite"
+    if not db.exists():
         return []
-    return sorted((p for p in runs_dir.iterdir() if (p / "request.json").exists()), key=lambda p: p.name)
+    conn = sqlite3.connect(db)
+    try:
+        rows = conn.execute("SELECT run_id, request, analysis, report_content FROM runs ORDER BY run_id").fetchall()
+    except sqlite3.OperationalError:  # table not created yet
+        rows = []
+    conn.close()
+    return [{"run_id": r[0], "request": json.loads(r[1]), "analysis": json.loads(r[2]),
+             "report_content": json.loads(r[3]) if r[3] else None} for r in rows]
+
+
+def reports(ws: Path) -> list[Path]:
+    return sorted(p for p in ws.rglob("interest-signals-*") if p.suffix in (".html", ".pdf"))
 
 
 def grounded(answer: str, analysis: dict[str, Any]) -> tuple[bool, list[str]]:
@@ -121,7 +135,8 @@ def direction_ok(answer: str, analysis: dict[str, Any]) -> tuple[bool, list[str]
     return not bad, bad
 
 
-def check(expect: dict[str, Any], turn: dict[str, Any], runs: list[Path], prev_runs: int) -> list[dict[str, Any]]:
+def check(expect: dict[str, Any], turn: dict[str, Any], runs: list[dict[str, Any]], prev_runs: int,
+          new_reports: list[Path]) -> list[dict[str, Any]]:
     results: list[dict[str, Any]] = []
 
     def add(name: str, ok: bool, detail: Any = None) -> None:
@@ -129,16 +144,15 @@ def check(expect: dict[str, Any], turn: dict[str, Any], runs: list[Path], prev_r
 
     analyze_calls = [c for c in turn["commands"] if "analyze.py" in c]
     new_run = runs[-1] if len(runs) > prev_runs else None
-    request = json.loads((new_run / "request.json").read_text()) if new_run else {}
-    analysis_path = new_run / "analysis.json" if new_run else None
-    analysis = json.loads(analysis_path.read_text()) if analysis_path and analysis_path.exists() else {}
+    request = new_run["request"] if new_run else {}
+    analysis = new_run["analysis"] if new_run else {}
     answer = turn["answer"]
 
     if "status" in expect:
         if expect["status"] == "needs_confirmation":
             add("status=needs_confirmation", analyze_calls and new_run is None, analyze_calls)
         else:
-            add(f"status={expect['status']}", bool(analysis), new_run.name if new_run else None)
+            add(f"status={expect['status']}", bool(analysis), new_run["run_id"] if new_run else None)
     if "languages" in expect:
         add("languages", sorted(request.get("languages", [])) == sorted(expect["languages"]), request.get("languages"))
     if "months" in expect:
@@ -154,9 +168,14 @@ def check(expect: dict[str, Any], turn: dict[str, Any], runs: list[Path], prev_r
         hits = analysis.get("cache", {}).get("hits", 0)
         add("cache_reuse", hits >= expect["cache_hits_min"], hits)
     if "artifact" in expect:
-        run = new_run or (runs[-1] if runs else None)
-        pdf = run / "report.pdf" if run else None
-        add("artifact", bool(pdf and pdf.exists()), str(pdf) if pdf else None)
+        suffix = ".pdf" if expect["artifact"] == "report_pdf" else ".html"
+        add("artifact", any(p.suffix == suffix for p in new_reports), [p.name for p in new_reports])
+    if expect.get("no_report"):
+        add("no_report_unasked", not new_reports, [p.name for p in new_reports])
+    if "report_language" in expect:
+        content = next((r["report_content"] for r in reversed(runs) if r["report_content"]), None) or {}
+        add("report_language", content.get("language", "").startswith(expect["report_language"]), content.get("language"))
+        add("report_has_analysis", bool(content.get("analysis")), None)
     if "answer_mentions_any" in expect:
         low = answer.lower()
         add("mentions", any(k.lower() in low for k in expect["answer_mentions_any"]), expect["answer_mentions_any"])
@@ -180,23 +199,23 @@ def run_case(case: dict[str, Any], model: str) -> dict[str, Any]:
     with tempfile.TemporaryDirectory() as tmp:
         tmp_path = Path(tmp)
         ws = prepare_workspace(tmp_path)
-        runs_dir = ws / "interest-signals-runs"
+        cache_dir = tmp_path / "cache"
         env = dict(os.environ)
         env.update({
             "INTEREST_SIGNALS_REPLAY_DIR": str(FIXTURES),
             "INTEREST_SIGNALS_REPLAY_FALLBACK": "live",
             "INTEREST_SIGNALS_TODAY": TODAY,
-            "INTEREST_SIGNALS_CACHE_DIR": str(tmp_path / "cache"),
-            "INTEREST_SIGNALS_RUNS_DIR": str(runs_dir),
+            "INTEREST_SIGNALS_CACHE_DIR": str(cache_dir),
         })
         env.setdefault("INTEREST_SIGNALS_CONTACT", "eval@interest-signals.invalid")
         session = None
         turns_out = []
         for turn_spec in case["turns"]:
-            before = len(latest_runs(runs_dir))
+            before, before_reports = len(latest_runs(cache_dir)), set(reports(ws))
             turn = run_turn(ws, turn_spec["prompt"], model, session, env)
             session = turn["session"]
-            checks = check(turn_spec["expect"], turn, latest_runs(runs_dir), before)
+            new_reports = [p for p in reports(ws) if p not in before_reports]
+            checks = check(turn_spec["expect"], turn, latest_runs(cache_dir), before, new_reports)
             turns_out.append({"prompt": turn_spec["prompt"], "commands": turn["commands"],
                               "answer": turn["answer"], "checks": checks})
         return {"id": case["id"], "turns": turns_out}

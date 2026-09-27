@@ -11,7 +11,7 @@ def _round(value: float | None, digits: int = 3) -> float | None:
     return None if value is None else round(value, digits)
 
 
-def result_summary(result: AnalysisResult, artifacts: dict[str, str]) -> dict[str, Any]:
+def result_summary(result: AnalysisResult, artifacts: dict[str, str] | None = None) -> dict[str, Any]:
     labels = {pair_key(lb.topic_id, lb.project): lb.label for lb in result.labels}
     evidence = {pair_key(e.topic_id, e.project): e.level for e in result.evidence}
     rationale = {pair_key(r.topic_id, r.project): r.sentences for r in result.rationale}
@@ -32,7 +32,7 @@ def result_summary(result: AnalysisResult, artifacts: dict[str, str]) -> dict[st
                 "rationale": rationale.get(key, []),
             }
         )
-    return {
+    summary = {
         "run_id": result.run_id,
         "parent_run_id": result.parent_run_id,
         "period": result.scope.period.model_dump(by_alias=True),
@@ -51,7 +51,10 @@ def result_summary(result: AnalysisResult, artifacts: dict[str, str]) -> dict[st
         "weighted_order": result.comparison.weighted.order if result.comparison.weighted else None,
         "cache": {"hits": result.cache.hits, "fetched": result.cache.fetched,
                   "http_requests": result.cache.http_requests},
-        "artifacts": artifacts,
-        "how_to_answer": "Retell `rationale` and the labels; do not invent numbers. Mention warnings "
-        "and that pageviews are attention to articles, not demand or willingness to pay.",
+        "how_to_answer": "Retell `rationale` and the labels using only these numbers. Mention warnings "
+        "and that pageviews are attention to articles, not demand or willingness to pay. Write a "
+        "report only when the user asks for one.",
     }
+    if artifacts:
+        summary["artifacts"] = artifacts
+    return summary

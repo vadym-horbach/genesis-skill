@@ -6,11 +6,23 @@
         "prompt": "Compare growth of interest in intermittent fasting in Polish and Czech Wikipedia over the last two years.",
         "expect": {
           "status": "ok",
-          "languages": ["pl", "cs"],
+          "languages": [
+            "pl",
+            "cs"
+          ],
           "months": 24,
-          "topic_qids_any": ["Q1666254"],
-          "answer_mentions_any": ["Polish", "pl.wikipedia", "no article", "not exist", "missing"],
-          "grounded_numbers": true
+          "topic_qids_any": [
+            "Q1666254"
+          ],
+          "answer_mentions_any": [
+            "Polish",
+            "pl.wikipedia",
+            "no article",
+            "not exist",
+            "missing"
+          ],
+          "grounded_numbers": true,
+          "no_report": true
         }
       },
       {
@@ -18,7 +30,11 @@
         "expect": {
           "status": "ok",
           "parent": true,
-          "languages": ["pl", "cs", "de"],
+          "languages": [
+            "pl",
+            "cs",
+            "de"
+          ],
           "cache_hits_min": 1,
           "grounded_numbers": true
         }
@@ -29,12 +45,24 @@
           "status": "ok",
           "parent": true,
           "months": 12,
-          "answer_mentions_any": ["15 months", "not computed", "insufficient", "too short", "not enough"]
+          "answer_mentions_any": [
+            "15 months",
+            "not computed",
+            "insufficient",
+            "too short",
+            "not enough"
+          ]
         }
       },
       {
         "prompt": "Prepare a one-page report I can share.",
-        "expect": {"artifact": "report_pdf", "answer_mentions_any": ["report.pdf", ".pdf"]}
+        "expect": {
+          "artifact": "report_pdf",
+          "report_language": "en",
+          "answer_mentions_any": [
+            ".pdf"
+          ]
+        }
       }
     ]
   },
@@ -45,16 +73,55 @@
         "prompt": "We are thinking about adding an astronomy course to our education app. Is interest in this topic growing in Ukrainian Wikipedia, and how much can we trust that?",
         "expect": {
           "status": "ok",
-          "languages": ["uk"],
-          "topic_qids_any": ["Q333"],
-          "answer_mentions_any": ["evidence", "trust", "confidence"],
+          "languages": [
+            "uk"
+          ],
+          "topic_qids_any": [
+            "Q333"
+          ],
+          "answer_mentions_any": [
+            "evidence",
+            "trust",
+            "confidence"
+          ],
           "grounded_numbers": true,
           "no_launch_claims": true
         }
       },
       {
         "prompt": "Compare it with ketogenic diet in the same language.",
-        "expect": {"status": "ok", "parent": true, "topics_min": 2}
+        "expect": {
+          "status": "ok",
+          "parent": true,
+          "topics_min": 2
+        }
+      }
+    ]
+  },
+  {
+    "id": "report_ukrainian",
+    "turns": [
+      {
+        "prompt": "Чи зростає інтерес до астрономії в українській і польській Вікіпедії за останні два роки?",
+        "expect": {
+          "status": "ok",
+          "languages": [
+            "uk",
+            "pl"
+          ],
+          "topic_qids_any": [
+            "Q333"
+          ],
+          "no_report": true,
+          "grounded_numbers": true
+        }
+      },
+      {
+        "prompt": "Підготуй звіт.",
+        "expect": {
+          "artifact": "report_pdf",
+          "report_language": "uk"
+        }
       }
     ]
   },
@@ -63,7 +130,10 @@
     "turns": [
       {
         "prompt": "How is interest in Mercury changing in English Wikipedia?",
-        "expect": {"status": "needs_confirmation", "answer_asks_user": true}
+        "expect": {
+          "status": "needs_confirmation",
+          "answer_asks_user": true
+        }
       }
     ]
   },
@@ -72,7 +142,13 @@
     "turns": [
       {
         "prompt": "Check astronomy interest for languages cz and ua.",
-        "expect": {"languages": ["cs", "uk"], "status": "ok"}
+        "expect": {
+          "languages": [
+            "cs",
+            "uk"
+          ],
+          "status": "ok"
+        }
       }
     ]
   },
@@ -81,7 +157,15 @@
     "turns": [
       {
         "prompt": "In which countries is interest in astronomy growing? Look at Poland and Germany.",
-        "expect": {"answer_mentions_any": ["not supported", "country", "language edition", "language is not"], "no_country_claims": true}
+        "expect": {
+          "answer_mentions_any": [
+            "not supported",
+            "country",
+            "language edition",
+            "language is not"
+          ],
+          "no_country_claims": true
+        }
       }
     ]
   }

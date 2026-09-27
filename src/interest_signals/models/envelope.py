@@ -17,7 +17,6 @@ EXIT_CODES: dict[str, int] = {"ok": 0, "error": 1, "needs_confirmation": 2}
 class Envelope(BaseModel):
     status: Status
     tool_version: str = __version__
-    run_dir: str | None = None
     summary: dict[str, Any] | None = None
     candidates: list[dict[str, Any]] = Field(default_factory=list)
     errors: list[Issue] = Field(default_factory=list)

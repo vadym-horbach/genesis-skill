@@ -1,6 +1,6 @@
 # interest-signals
 
-Agent Skill that measures attention to topics across Wikipedia language editions and produces charts and a one-page HTML/PDF report. Built for B2C teams deciding which topic, course or localization to validate next.
+Agent Skill that measures attention to topics across Wikipedia language editions and, on request, writes a one-page HTML/PDF report with the agent's analysis in the user's language. Built for B2C teams deciding which topic, course or localization to validate next.
 
 Example: *"Compare interest in intermittent fasting in Polish and Czech Wikipedia over the last two years."* The agent runs one command. It gets back scale, relative attention, year-over-year growth, a robust long-term trend, consistency, spikes, an evidence level, a label and template rationale, with every number computed by code.
 
@@ -27,19 +27,19 @@ Optional environment variables:
 | Variable | Purpose |
 |---|---|
 | `INTEREST_SIGNALS_CONTACT` | email/URL added to the User-Agent (recommended by Wikimedia) |
-| `INTEREST_SIGNALS_CACHE_DIR` | cache location (default: OS user cache dir) |
-| `INTEREST_SIGNALS_RUNS_DIR` | run artifacts (default `./interest-signals-runs`) |
+| `INTEREST_SIGNALS_CACHE_DIR` | cache and run state location (default: OS user cache dir) |
 
 ## Use without an agent
 
 ```sh
 python3 scripts/analyze.py --topic "astronomy" --languages uk --months 24
 python3 scripts/analyze.py --parent <run_id> --add-languages de
-python3 scripts/analyze.py --render <run_id> --format pdf
+python3 scripts/analyze.py report-template <run_id>          # report content to fill/translate
+python3 scripts/analyze.py --render <run_id> --content c.json --format pdf
 python3 scripts/analyze.py cache status
 ```
 
-Each run writes `interest-signals-runs/<run_id>/` containing `request.json`, `analysis.json` (canonical result), `charts/*.png`, `report.html` and `report.pdf`.
+An analysis writes no files. Its pinned request and canonical result (`AnalysisResult`) go to the `runs` table of the cache database (`cache.sqlite`, kept 30 days) for follow-ups and rendering. Reports are written only by `--render`, into the current directory or `--out DIR`, as `interest-signals-<topics>-<id>.html/.pdf`. `--content` adds the agent's analysis and the report language; every number in it must come from the result, or the render is rejected. Without `--content` the report is English with no analysis section.
 
 ## Layout
 

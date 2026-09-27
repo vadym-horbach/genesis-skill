@@ -85,7 +85,6 @@ class AnalysisRequest(BaseModel):
     dimensions: list[Literal["language", "country"]] = Field(default_factory=lambda: ["language"])
     countries: list[str] = Field(default_factory=list)
     criteria: Criteria | None = None
-    formats: list[Literal["html", "pdf"]] = Field(default_factory=lambda: ["html", "pdf"])
 
     @field_validator("languages")
     @classmethod

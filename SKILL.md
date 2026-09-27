@@ -1,7 +1,7 @@
 ---
 name: interest-signals
-description: Measures attention to topics in Wikipedia language editions (pageviews, growth, trend, evidence quality) and produces charts plus a one-page HTML/PDF report. Use when a user asks whether interest in a topic is growing, compares topics or languages for a B2C product (which course, which localization, which audience to validate next), or wants a shareable report from Wikipedia pageview data. Also handles follow-ups on a previous run (add a language, change the period, add a topic, change criteria, regenerate the report).
-allowed-tools: Bash(python3 *scripts/analyze.py*) Bash(python *scripts/analyze.py*)
+description: Measures attention to topics in Wikipedia language editions (pageviews, growth, trend, evidence quality) and, on request, writes a one-page HTML/PDF report with your analysis in the user's language. Use when a user asks whether interest in a topic is growing, compares topics or languages for a B2C product (which course, which localization, which audience to validate next), or wants a shareable report from Wikipedia pageview data. Also handles follow-ups on a previous run (add a language, change the period, add a topic, change criteria, write or rewrite the report).
+allowed-tools: Bash(python3 */scripts/analyze.py *) Bash(python */scripts/analyze.py *)
 ---
 
 # interest-signals
@@ -28,18 +28,21 @@ Flags:
 - `--languages pl cs uk` Wikipedia language codes (subdomain of `<code>.wikipedia.org`: `cs` not `cz`, `uk` not `ua`, `ja` not `jp`). Omit to get the 10 largest editions that have the article.
 - `--months N` complete calendar months (default 24; growth needs 15 or more).
 - `--weights growth=2,scale=1` only when the user states priorities. Axes: `scale`, `relative_attention`, `growth`, `consistency`.
-- `--format html,pdf` (default both). `--request FILE` takes the same fields as JSON (schema: `references/output-schema.md`).
+- `--request FILE` takes the same fields as JSON (schema: `references/output-schema.md`).
+
+The analysis writes no files; run state stays in the skill cache for follow-ups.
 
 Stdout is exactly one JSON envelope. Exit code: 0 `ok`, 2 `needs_confirmation`, 1 `error`.
 
 ## Read the envelope
 
-**`ok`**: answer from `summary`:
+**`ok`**: answer in chat from `summary`:
 
 1. `summary.topics[].cluster`: which articles were analyzed. If `auto_selected` is true, name the article so the user can correct it.
 2. `summary.per_topic_language[]`: one row per topic and language edition, with `label`, `evidence` and `rationale`. Retell the `rationale` sentences; they already contain the right numbers.
 3. `warnings[]`: mention each one that changes the conclusion (history changes, missing articles, short history, spikes). Use its `hint`.
-4. `summary.artifacts`: give the paths of `report_pdf` / `report_html` when the user wants a report.
+
+Write a report only when the user asks for one (see Report).
 
 **`needs_confirmation`** (`AMBIGUOUS_TOPIC`): the topic matched several articles. Show `candidates[].candidates[]` (label, description, relation_hint) and ask the user which ones belong to the topic (one or several, max 5). Rerun with `--qids` of the chosen items. Pick only with the user's answer.
 
@@ -53,7 +56,7 @@ Recommend in the same vocabulary: "a candidate for further validation", "a stron
 
 ## Follow-ups
 
-Each run prints `run_dir` and `summary.run_id`. For a follow-up, pass `--parent <run_id>` plus only what changes; cached raw data is reused and metrics are recomputed:
+Each run prints `summary.run_id`. For a follow-up, pass `--parent <run_id>` plus only what changes; cached raw data is reused and metrics are recomputed:
 
 | User says | Command |
 |---|---|
@@ -61,12 +64,33 @@ Each run prints `run_dir` and `summary.run_id`. For a follow-up, pass `--parent 
 | "Only the last 12 months" | `--parent <id> --months 12` |
 | "Growth matters more than scale" | `--parent <id> --weights growth=2,scale=1` |
 | "Compare with another topic" | `--parent <id> --add-topic "keto diet"` |
-| "Prepare the report" (no data change) | `--render <id>` (add `--format pdf` for PDF only) |
+| "Prepare the report" | see Report |
 
-Keep `--out` identical between a run and its follow-ups when you set it.
+## Report
+
+Only on the user's request. The report carries **your analysis** in the **report language**: the language the user names for the report, otherwise the language of the user's messages.
+
+1. `python3 <skill>/scripts/analyze.py report-template <run_id>` prints `summary.report_template`: the report content prefilled in English.
+2. Write the content:
+   - `language`: tag of the report language (`en`, `uk`, `de`, ...).
+   - `analysis`: `headline` (one sentence), `findings` (1-4 sentences comparing topics and editions), `recommendation` (what to validate next, in the label vocabulary, with the market-data caveat), `next_steps` (0-3). Every number comes from the envelope `summary`; rounding to thousands or millions is fine, new arithmetic (ratios, sums) is rejected.
+   - Report language other than English: translate every value of `text` (keep `{placeholders}`), `topics`, `entities`, `warnings`, `limitations`, and optionally `details`. English: send only `language` and `analysis`.
+3. Render into the user's directory. Pass the content as one single-quoted JSON argument on one line; write apostrophes inside it as `’`:
+
+```bash
+python3 <skill>/scripts/analyze.py --render <run_id> --content-json '{"language": "en", "analysis": {"headline": "...", "findings": ["..."], "recommendation": "...", "next_steps": []}}'
+```
+
+`--format pdf` or `--format html` limits the formats (default both); `--out DIR` when the user names a folder. Give the user `summary.artifacts.report_pdf` / `report_html`.
+
+- `REPORT_CONTENT_INVALID`: the listed numbers are not in the result, or a field is too long; fix them and render again.
+- `REPORT_UNTRANSLATED`: translate the listed entries and render again.
+- `REPORT_PDF_GLYPHS_MISSING`: give the user the HTML report.
+
+Rendering again without content reuses the last content of that run (for example, PDF only).
 
 ## Limits
 
 - Language edition is not country: Poles read English articles too.
 - A missing article in a language is not missing interest.
-- Cache: `analyze.py cache status` / `cache clear`; `--refresh` refetches, `--no-cache` bypasses.
+- Cache: `analyze.py cache status` / `cache clear` (also deletes run state); `--refresh` refetches, `--no-cache` bypasses cached data.

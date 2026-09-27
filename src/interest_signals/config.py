@@ -61,6 +61,7 @@ IMMUTABLE_AFTER_DAYS = 3
 RECENT_MONTH_TTL_HOURS = 24
 METADATA_TTL_DAYS = 7
 CACHE_SCHEMA_VERSION = 2
+RUN_RETENTION_DAYS = 30
 RESOLVER_VERSION = 1
 
 # Comparison axes: request weight name -> metric field
@@ -77,3 +78,12 @@ LANGUAGE_CODE_HINTS = {
     "cn": "zh", "by": "be", "rs": "sr", "ee": "et", "ge": "ka", "il": "he", "vn": "vi",
     "br": "pt", "us": "en", "gb": "en", "uk-ua": "uk", "pl-pl": "pl",
 }
+
+# Report content written by the agent (caps keep the PDF on one page)
+REPORT_HEADLINE_MAX = 160
+REPORT_FINDINGS_MAX = 4
+REPORT_FINDING_MAX = 280
+REPORT_RECOMMENDATION_MAX = 400
+REPORT_NEXT_STEPS_MAX = 3
+REPORT_NEXT_STEP_MAX = 160
+REPORT_FREE_SMALL_NUMBER = 12  # integers up to this are counts (months, languages) and need no source
