@@ -1,0 +1,5 @@
+{
+ "url": "https://wikimedia.org/api/rest_v1/metrics/bytes-difference/net/per-page/zh.wikipedia/%E5%A4%A9%E6%96%87%E5%AD%B8/all-editor-types/monthly/20240901/20260901",
+ "status": 200,
+ "body": "{\"items\":[{\"project\":\"zh.wikipedia\",\"page-title\":\"天文學\",\"editor-type\":\"all-editor-types\",\"granularity\":\"monthly\",\"results\":[{\"timestamp\":\"2025-01-01T00:00:00.000Z\",\"net_bytes_diff\":78},{\"timestamp\":\"2025-02-01T00:00:00.000Z\",\"net_bytes_diff\":-52},{\"timestamp\":\"2025-03-01T00:00:00.000Z\",\"net_bytes_diff\":6},{\"timestamp\":\"2025-04-01T00:00:00.000Z\",\"net_bytes_diff\":-157},{\"timestamp\":\"2025-05-01T00:00:00.000Z\",\"net_bytes_diff\":-56},{\"timestamp\":\"2025-06-01T00:00:00.000Z\",\"net_bytes_diff\":-132},{\"timestamp\":\"2025-07-01T00:00:00.000Z\",\"net_bytes_diff\":49},{\"timestamp\":\"2025-08-01T00:00:00.000Z\",\"net_bytes_diff\":1},{\"timestamp\":\"2025-09-01T00:00:00.000Z\",\"net_bytes_diff\":-9},{\"timestamp\":\"2025-10-01T00:00:00.000Z\",\"net_bytes_diff\":417},{\"timestamp\":\"2026-05-01T00:00:00.000Z\",\"net_bytes_diff\":-121},{\"timestamp\":\"2026-07-01T00:00:00.000Z\",\"net_bytes_diff\":192}]}]}"
+}

@@ -1,0 +1,5 @@
+{
+ "url": "https://zh.wikipedia.org/w/api.php?action=query&format=json&formatversion=2&pageids=70&prop=revisions&rvdir=newer&rvlimit=1&rvprop=timestamp",
+ "status": 200,
+ "body": "{\"continue\":{\"rvcontinue\":\"20021114164601|282\",\"continue\":\"||\"},\"query\":{\"pages\":[{\"pageid\":70,\"ns\":0,\"title\":\"天文學\",\"revisions\":[{\"timestamp\":\"2002-11-14T16:45:58Z\"}]}]}}"
+}

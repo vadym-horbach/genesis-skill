@@ -1,0 +1,5 @@
+{
+ "url": "https://ja.wikipedia.org/w/api.php?action=query&format=json&formatversion=2&pageids=988027&prop=revisions&rvdir=newer&rvlimit=1&rvprop=timestamp",
+ "status": 200,
+ "body": "{\"continue\":{\"rvcontinue\":\"20030210084202|1577\",\"continue\":\"||\"},\"query\":{\"pages\":[{\"pageid\":988027,\"ns\":0,\"title\":\"天文学\",\"revisions\":[{\"timestamp\":\"2003-02-03T15:09:40Z\"}]}]}}"
+}

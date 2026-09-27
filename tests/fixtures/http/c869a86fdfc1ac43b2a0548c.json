@@ -1,0 +1,5 @@
+{
+ "url": "https://cs.wikipedia.org/w/api.php?action=query&format=json&formatversion=2&pageids=720170&prop=redirects&rdlimit=max&rdnamespace=0&rdprop=title",
+ "status": 200,
+ "body": "{\"batchcomplete\":true,\"query\":{\"pages\":[{\"pageid\":720170,\"ns\":0,\"title\":\"Ketogenní dieta\"}]},\"limits\":{\"redirects\":500}}"
+}

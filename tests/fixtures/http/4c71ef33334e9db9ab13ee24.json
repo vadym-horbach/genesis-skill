@@ -1,0 +1,5 @@
+{
+ "url": "https://en.wikipedia.org/w/api.php?action=query&format=json&formatversion=2&ppprop=wikibase_item%7Cdisambiguation&prop=pageprops%7Cinfo%7Cdescription&redirects=1&titles=mercury",
+ "status": 200,
+ "body": "{\"batchcomplete\":true,\"query\":{\"normalized\":[{\"fromencoded\":false,\"from\":\"mercury\",\"to\":\"Mercury\"}],\"pages\":[{\"pageid\":19007,\"ns\":0,\"title\":\"Mercury\",\"pageprops\":{\"disambiguation\":\"\",\"wikibase_item\":\"Q48397\"},\"contentmodel\":\"wikitext\",\"pagelanguage\":\"en\",\"pagelanguagehtmlcode\":\"en\",\"pagelanguagedir\":\"ltr\",\"touched\":\"2026-09-23T04:51:03Z\",\"lastrevid\":1376049828,\"length\":8290,\"description\":\"Topics referred to by the same term\",\"descriptionsource\":\"local\"}]}}"
+}

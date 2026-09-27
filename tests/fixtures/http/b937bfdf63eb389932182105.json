@@ -1,0 +1,5 @@
+{
+ "url": "https://uk.wikipedia.org/w/api.php?action=query&format=json&formatversion=2&pageids=827&prop=redirects&rdlimit=max&rdnamespace=0&rdprop=title",
+ "status": 200,
+ "body": "{\"batchcomplete\":true,\"query\":{\"pages\":[{\"pageid\":827,\"ns\":0,\"title\":\"Астрономія\",\"redirects\":[{\"ns\":0,\"title\":\"Astronomy\"}]}]},\"limits\":{\"redirects\":500}}"
+}

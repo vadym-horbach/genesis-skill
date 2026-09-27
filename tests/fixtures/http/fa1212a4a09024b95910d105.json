@@ -1,0 +1,5 @@
+{
+ "url": "https://cs.wikipedia.org/w/api.php?action=query&format=json&formatversion=2&ppprop=wikibase_item%7Cdisambiguation&prop=pageprops%7Cinfo%7Cdescription&redirects=1&titles=ketogenic+diet",
+ "status": 200,
+ "body": "{\"batchcomplete\":true,\"query\":{\"normalized\":[{\"fromencoded\":false,\"from\":\"ketogenic diet\",\"to\":\"Ketogenic diet\"}],\"pages\":[{\"ns\":0,\"title\":\"Ketogenic diet\",\"missing\":true,\"contentmodel\":\"wikitext\",\"pagelanguage\":\"cs\",\"pagelanguagehtmlcode\":\"cs\",\"pagelanguagedir\":\"ltr\"}]}}"
+}

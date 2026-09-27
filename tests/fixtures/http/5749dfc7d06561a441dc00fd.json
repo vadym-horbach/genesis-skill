@@ -1,0 +1,5 @@
+{
+ "url": "https://pl.wikipedia.org/w/api.php?action=query&format=json&formatversion=2&pageids=50567&prop=revisions&rvdir=newer&rvlimit=1&rvprop=timestamp",
+ "status": 200,
+ "body": "{\"continue\":{\"rvcontinue\":\"20040403162902|222794\",\"continue\":\"||\"},\"query\":{\"pages\":[{\"pageid\":50567,\"ns\":0,\"title\":\"Post\",\"revisions\":[{\"timestamp\":\"2004-04-01T15:04:42Z\"}]}]}}"
+}

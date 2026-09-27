@@ -1,0 +1,88 @@
+[
+  {
+    "id": "fasting_pl_cs",
+    "turns": [
+      {
+        "prompt": "Compare growth of interest in intermittent fasting in Polish and Czech Wikipedia over the last two years.",
+        "expect": {
+          "status": "ok",
+          "languages": ["pl", "cs"],
+          "months": 24,
+          "topic_qids_any": ["Q1666254"],
+          "answer_mentions_any": ["Polish", "pl.wikipedia", "no article", "not exist", "missing"],
+          "grounded_numbers": true
+        }
+      },
+      {
+        "prompt": "Add German.",
+        "expect": {
+          "status": "ok",
+          "parent": true,
+          "languages": ["pl", "cs", "de"],
+          "cache_hits_min": 1,
+          "grounded_numbers": true
+        }
+      },
+      {
+        "prompt": "Use only the last 12 months.",
+        "expect": {
+          "status": "ok",
+          "parent": true,
+          "months": 12,
+          "answer_mentions_any": ["15 months", "not computed", "insufficient", "too short", "not enough"]
+        }
+      },
+      {
+        "prompt": "Prepare a one-page report I can share.",
+        "expect": {"artifact": "report_pdf", "answer_mentions_any": ["report.pdf", ".pdf"]}
+      }
+    ]
+  },
+  {
+    "id": "astronomy_uk",
+    "turns": [
+      {
+        "prompt": "We are thinking about adding an astronomy course to our education app. Is interest in this topic growing in Ukrainian Wikipedia, and how much can we trust that?",
+        "expect": {
+          "status": "ok",
+          "languages": ["uk"],
+          "topic_qids_any": ["Q333"],
+          "answer_mentions_any": ["evidence", "trust", "confidence"],
+          "grounded_numbers": true,
+          "no_launch_claims": true
+        }
+      },
+      {
+        "prompt": "Compare it with ketogenic diet in the same language.",
+        "expect": {"status": "ok", "parent": true, "topics_min": 2}
+      }
+    ]
+  },
+  {
+    "id": "ambiguous_mercury",
+    "turns": [
+      {
+        "prompt": "How is interest in Mercury changing in English Wikipedia?",
+        "expect": {"status": "needs_confirmation", "answer_asks_user": true}
+      }
+    ]
+  },
+  {
+    "id": "wrong_language_code",
+    "turns": [
+      {
+        "prompt": "Check astronomy interest for languages cz and ua.",
+        "expect": {"languages": ["cs", "uk"], "status": "ok"}
+      }
+    ]
+  },
+  {
+    "id": "country_question",
+    "turns": [
+      {
+        "prompt": "In which countries is interest in astronomy growing? Look at Poland and Germany.",
+        "expect": {"answer_mentions_any": ["not supported", "country", "language edition", "language is not"], "no_country_claims": true}
+      }
+    ]
+  }
+]

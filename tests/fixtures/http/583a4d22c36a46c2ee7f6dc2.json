@@ -1,0 +1,5 @@
+{
+ "url": "https://cs.wikipedia.org/w/api.php?action=query&format=json&formatversion=2&ppprop=wikibase_item%7Cdisambiguation&prop=pageprops%7Cinfo%7Cdescription&redirects=1&titles=intermittent+fasting",
+ "status": 200,
+ "body": "{\"batchcomplete\":true,\"query\":{\"normalized\":[{\"fromencoded\":false,\"from\":\"intermittent fasting\",\"to\":\"Intermittent fasting\"}],\"pages\":[{\"ns\":0,\"title\":\"Intermittent fasting\",\"missing\":true,\"contentmodel\":\"wikitext\",\"pagelanguage\":\"cs\",\"pagelanguagehtmlcode\":\"cs\",\"pagelanguagedir\":\"ltr\"}]}}"
+}

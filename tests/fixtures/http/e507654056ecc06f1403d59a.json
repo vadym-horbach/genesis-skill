@@ -1,0 +1,5 @@
+{
+ "url": "https://ru.wikipedia.org/w/api.php?action=query&format=json&formatversion=2&pageids=588&prop=redirects&rdlimit=max&rdnamespace=0&rdprop=title",
+ "status": 200,
+ "body": "{\"batchcomplete\":true,\"query\":{\"pages\":[{\"pageid\":588,\"ns\":0,\"title\":\"Астрономия\",\"redirects\":[{\"ns\":0,\"title\":\"Астрогнозия\"},{\"ns\":0,\"title\":\"Астрономические наблюдения\"}]}]},\"limits\":{\"redirects\":500}}"
+}

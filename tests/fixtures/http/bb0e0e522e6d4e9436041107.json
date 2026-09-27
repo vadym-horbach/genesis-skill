@@ -1,0 +1,5 @@
+{
+ "url": "https://wikimedia.org/api/rest_v1/metrics/bytes-difference/net/per-page/cs.wikipedia/Ketogenn%C3%AD_dieta/all-editor-types/monthly/20240901/20260901",
+ "status": 200,
+ "body": "{\"items\":[{\"project\":\"cs.wikipedia\",\"page-title\":\"Ketogenní_dieta\",\"editor-type\":\"all-editor-types\",\"granularity\":\"monthly\",\"results\":[{\"timestamp\":\"2024-11-01T00:00:00.000Z\",\"net_bytes_diff\":-19},{\"timestamp\":\"2025-02-01T00:00:00.000Z\",\"net_bytes_diff\":0},{\"timestamp\":\"2025-06-01T00:00:00.000Z\",\"net_bytes_diff\":-26},{\"timestamp\":\"2025-09-01T00:00:00.000Z\",\"net_bytes_diff\":339},{\"timestamp\":\"2025-12-01T00:00:00.000Z\",\"net_bytes_diff\":-48},{\"timestamp\":\"2026-03-01T00:00:00.000Z\",\"net_bytes_diff\":17}]}]}"
+}

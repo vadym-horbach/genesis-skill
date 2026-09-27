@@ -1,0 +1,5 @@
+{
+ "url": "https://en.wikipedia.org/w/api.php?action=query&format=json&formatversion=2&ppprop=wikibase_item%7Cdisambiguation&prop=pageprops%7Cinfo%7Cdescription&redirects=1&titles=learning+English",
+ "status": 200,
+ "body": "{\"batchcomplete\":true,\"query\":{\"normalized\":[{\"fromencoded\":false,\"from\":\"learning English\",\"to\":\"Learning English\"}],\"pages\":[{\"pageid\":21331306,\"ns\":0,\"title\":\"Learning English\",\"pageprops\":{\"disambiguation\":\"\",\"wikibase_item\":\"Q16871974\"},\"contentmodel\":\"wikitext\",\"pagelanguage\":\"en\",\"pagelanguagehtmlcode\":\"en\",\"pagelanguagedir\":\"ltr\",\"touched\":\"2026-09-23T04:58:47Z\",\"lastrevid\":1242339293,\"length\":387,\"description\":\"Topics referred to by the same term\",\"descriptionsource\":\"local\"}]}}"
+}

@@ -1,0 +1,5 @@
+{
+ "url": "https://ja.wikipedia.org/w/api.php?action=query&format=json&formatversion=2&ppprop=wikibase_item%7Cdisambiguation&prop=pageprops%7Cinfo%7Cdescription&redirects=1&titles=%E5%A4%A9%E6%96%87%E5%AD%A6",
+ "status": 200,
+ "body": "{\"batchcomplete\":true,\"query\":{\"pages\":[{\"pageid\":988027,\"ns\":0,\"title\":\"天文学\",\"pageprops\":{\"wikibase_item\":\"Q333\"},\"contentmodel\":\"wikitext\",\"pagelanguage\":\"ja\",\"pagelanguagehtmlcode\":\"ja\",\"pagelanguagedir\":\"ltr\",\"touched\":\"2026-09-22T04:58:31Z\",\"lastrevid\":111105564,\"length\":48857,\"description\":\"地球外で生起する自然現象観測・法則発見等を行う自然科学の一分野\",\"descriptionsource\":\"central\"}]}}"
+}

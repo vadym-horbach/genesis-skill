@@ -1,0 +1,5 @@
+{
+ "url": "https://fr.wikipedia.org/w/api.php?action=query&format=json&formatversion=2&ppprop=wikibase_item%7Cdisambiguation&prop=pageprops%7Cinfo%7Cdescription&redirects=1&titles=Astronomie",
+ "status": 200,
+ "body": "{\"batchcomplete\":true,\"query\":{\"pages\":[{\"pageid\":64,\"ns\":0,\"title\":\"Astronomie\",\"pageprops\":{\"wikibase_item\":\"Q333\"},\"contentmodel\":\"wikitext\",\"pagelanguage\":\"fr\",\"pagelanguagehtmlcode\":\"fr\",\"pagelanguagedir\":\"ltr\",\"touched\":\"2026-09-27T11:43:53Z\",\"lastrevid\":239854798,\"length\":72012,\"description\":\"discipline scientifique qui étudie les étoiles et autres corps célestes\",\"descriptionsource\":\"central\"}]}}"
+}

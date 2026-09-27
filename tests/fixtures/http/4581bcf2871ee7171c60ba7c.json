@@ -1,0 +1,5 @@
+{
+ "url": "https://fr.wikipedia.org/w/api.php?action=query&format=json&formatversion=2&pageids=64&prop=redirects&rdlimit=max&rdnamespace=0&rdprop=title",
+ "status": 200,
+ "body": "{\"batchcomplete\":true,\"query\":{\"pages\":[{\"pageid\":64,\"ns\":0,\"title\":\"Astronomie\",\"redirects\":[{\"ns\":0,\"title\":\"Astronomique\"},{\"ns\":0,\"title\":\"ASTRONOMIE\"},{\"ns\":0,\"title\":\"Astronomiques\"}]}]},\"limits\":{\"redirects\":500}}"
+}

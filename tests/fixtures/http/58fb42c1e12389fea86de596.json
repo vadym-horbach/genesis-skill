@@ -1,0 +1,5 @@
+{
+ "url": "https://wikimedia.org/api/rest_v1/metrics/bytes-difference/net/per-page/it.wikipedia/Astronomia/all-editor-types/monthly/20240901/20260901",
+ "status": 200,
+ "body": "{\"items\":[{\"project\":\"it.wikipedia\",\"page-title\":\"Astronomia\",\"editor-type\":\"all-editor-types\",\"granularity\":\"monthly\",\"results\":[{\"timestamp\":\"2024-09-01T00:00:00.000Z\",\"net_bytes_diff\":-6},{\"timestamp\":\"2024-11-01T00:00:00.000Z\",\"net_bytes_diff\":37},{\"timestamp\":\"2025-02-01T00:00:00.000Z\",\"net_bytes_diff\":0},{\"timestamp\":\"2025-03-01T00:00:00.000Z\",\"net_bytes_diff\":0},{\"timestamp\":\"2025-06-01T00:00:00.000Z\",\"net_bytes_diff\":-52},{\"timestamp\":\"2025-10-01T00:00:00.000Z\",\"net_bytes_diff\":137},{\"timestamp\":\"2025-11-01T00:00:00.000Z\",\"net_bytes_diff\":5},{\"timestamp\":\"2025-12-01T00:00:00.000Z\",\"net_bytes_diff\":0},{\"timestamp\":\"2026-01-01T00:00:00.000Z\",\"net_bytes_diff\":-3},{\"timestamp\":\"2026-05-01T00:00:00.000Z\",\"net_bytes_diff\":-34},{\"timestamp\":\"2026-07-01T00:00:00.000Z\",\"net_bytes_diff\":379}]}]}"
+}

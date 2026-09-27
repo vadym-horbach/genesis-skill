@@ -1,0 +1,5 @@
+{
+ "url": "https://uk.wikipedia.org/w/api.php?action=query&format=json&formatversion=2&pageids=827&prop=revisions&rvdir=newer&rvlimit=1&rvprop=timestamp",
+ "status": 200,
+ "body": "{\"continue\":{\"rvcontinue\":\"20040227160846|880\",\"continue\":\"||\"},\"query\":{\"pages\":[{\"pageid\":827,\"ns\":0,\"title\":\"Астрономія\",\"revisions\":[{\"timestamp\":\"2004-02-26T16:27:52Z\"}]}]}}"
+}

@@ -1,0 +1,5 @@
+{
+ "url": "https://pt.wikipedia.org/w/api.php?action=query&format=json&formatversion=2&pageids=220&prop=redirects&rdlimit=max&rdnamespace=0&rdprop=title",
+ "status": 200,
+ "body": "{\"batchcomplete\":true,\"query\":{\"pages\":[{\"pageid\":220,\"ns\":0,\"title\":\"Astronomia\",\"redirects\":[{\"ns\":0,\"title\":\"Astrônoma\"},{\"ns\":0,\"title\":\"Astrónoma\"},{\"ns\":0,\"title\":\"Astronômico\"},{\"ns\":0,\"title\":\"Ciências espaciais\"},{\"ns\":0,\"title\":\"Astrônomos\"},{\"ns\":0,\"title\":\"Astrónomos\"},{\"ns\":0,\"title\":\"Levantamento astronômico\"},{\"ns\":0,\"title\":\"Astronómico\"}]}]},\"limits\":{\"redirects\":500}}"
+}

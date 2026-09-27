@@ -1,0 +1,5 @@
+{
+ "url": "https://fr.wikipedia.org/w/api.php?action=query&format=json&formatversion=2&pageids=64&prop=revisions&rvdir=newer&rvlimit=1&rvprop=timestamp",
+ "status": 200,
+ "body": "{\"continue\":{\"rvcontinue\":\"20020904113518|147\",\"continue\":\"||\"},\"query\":{\"pages\":[{\"pageid\":64,\"ns\":0,\"title\":\"Astronomie\",\"revisions\":[{\"timestamp\":\"2002-08-25T10:05:41Z\"}]}]}}"
+}

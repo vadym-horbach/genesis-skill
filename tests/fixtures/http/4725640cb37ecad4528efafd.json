@@ -1,0 +1,5 @@
+{
+ "url": "https://wikimedia.org/api/rest_v1/metrics/pageviews/per-article/uk.wikipedia/all-access/user/Astronomy/monthly/2024090100/2026083100",
+ "status": 200,
+ "body": "{\"items\":[{\"project\":\"uk.wikipedia\",\"article\":\"Astronomy\",\"granularity\":\"monthly\",\"timestamp\":\"2026070100\",\"access\":\"all-access\",\"agent\":\"user\",\"views\":2},{\"project\":\"uk.wikipedia\",\"article\":\"Astronomy\",\"granularity\":\"monthly\",\"timestamp\":\"2026080100\",\"access\":\"all-access\",\"agent\":\"user\",\"views\":2}]}"
+}

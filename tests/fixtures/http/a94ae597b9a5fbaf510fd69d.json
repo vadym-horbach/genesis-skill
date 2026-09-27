@@ -1,0 +1,5 @@
+{
+ "url": "https://it.wikipedia.org/w/api.php?action=query&format=json&formatversion=2&ppprop=wikibase_item%7Cdisambiguation&prop=pageprops%7Cinfo%7Cdescription&redirects=1&titles=Astronomia",
+ "status": 200,
+ "body": "{\"batchcomplete\":true,\"query\":{\"pages\":[{\"pageid\":9,\"ns\":0,\"title\":\"Astronomia\",\"pageprops\":{\"wikibase_item\":\"Q333\"},\"contentmodel\":\"wikitext\",\"pagelanguage\":\"it\",\"pagelanguagehtmlcode\":\"it\",\"pagelanguagedir\":\"ltr\",\"touched\":\"2026-09-27T15:39:59Z\",\"lastrevid\":151684563,\"length\":78483,\"description\":\"branca delle scienze naturali che studia i corpi celesti\",\"descriptionsource\":\"central\"}]}}"
+}

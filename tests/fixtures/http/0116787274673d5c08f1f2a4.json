@@ -1,0 +1,5 @@
+{
+ "url": "https://de.wikipedia.org/w/api.php?action=query&format=json&formatversion=2&pageids=135&prop=redirects&rdlimit=max&rdnamespace=0&rdprop=title",
+ "status": 200,
+ "body": "{\"batchcomplete\":true,\"query\":{\"pages\":[{\"pageid\":135,\"ns\":0,\"title\":\"Astronomie\",\"redirects\":[{\"ns\":0,\"title\":\"Astronomisch\"},{\"ns\":0,\"title\":\"Sternkunde\"},{\"ns\":0,\"title\":\"Himmelskunde\"},{\"ns\":0,\"title\":\"Sternenkunde\"},{\"ns\":0,\"title\":\"Telescope Science\"},{\"ns\":0,\"title\":\"Galaktische Astronomie\"}]}]},\"limits\":{\"redirects\":500}}"
+}

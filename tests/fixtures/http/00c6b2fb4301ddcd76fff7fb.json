@@ -1,0 +1,5 @@
+{
+ "url": "https://wikimedia.org/api/rest_v1/metrics/bytes-difference/net/per-page/pl.wikipedia/Post/all-editor-types/monthly/20240901/20260901",
+ "status": 200,
+ "body": "{\"items\":[{\"project\":\"pl.wikipedia\",\"page-title\":\"Post\",\"editor-type\":\"all-editor-types\",\"granularity\":\"monthly\",\"results\":[{\"timestamp\":\"2024-12-01T00:00:00.000Z\",\"net_bytes_diff\":0},{\"timestamp\":\"2025-12-01T00:00:00.000Z\",\"net_bytes_diff\":-256},{\"timestamp\":\"2026-02-01T00:00:00.000Z\",\"net_bytes_diff\":33},{\"timestamp\":\"2026-07-01T00:00:00.000Z\",\"net_bytes_diff\":-15}]}]}"
+}

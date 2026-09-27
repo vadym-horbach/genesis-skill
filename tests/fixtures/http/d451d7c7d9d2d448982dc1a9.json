@@ -1,0 +1,5 @@
+{
+ "url": "https://pl.wikipedia.org/w/api.php?action=query&format=json&formatversion=2&ppprop=wikibase_item%7Cdisambiguation&prop=pageprops%7Cinfo%7Cdescription&redirects=1&titles=Post",
+ "status": 200,
+ "body": "{\"batchcomplete\":true,\"query\":{\"pages\":[{\"pageid\":50567,\"ns\":0,\"title\":\"Post\",\"pageprops\":{\"wikibase_item\":\"Q44602\"},\"contentmodel\":\"wikitext\",\"pagelanguage\":\"pl\",\"pagelanguagehtmlcode\":\"pl\",\"pagelanguagedir\":\"ltr\",\"touched\":\"2026-09-22T07:51:55Z\",\"lastrevid\":80278111,\"length\":25089,\"description\":\"powstrzymanie się od czegoś dla większego dobra lub ograniczanie jakiegoś dobra w szczytnym celu\",\"descriptionsource\":\"central\"}]}}"
+}

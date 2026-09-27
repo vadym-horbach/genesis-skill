@@ -1,0 +1,5 @@
+{
+ "url": "https://zh.wikipedia.org/w/api.php?action=query&format=json&formatversion=2&ppprop=wikibase_item%7Cdisambiguation&prop=pageprops%7Cinfo%7Cdescription&redirects=1&titles=%E5%A4%A9%E6%96%87%E5%AD%B8",
+ "status": 200,
+ "body": "{\"batchcomplete\":true,\"query\":{\"pages\":[{\"pageid\":70,\"ns\":0,\"title\":\"天文學\",\"pageprops\":{\"wikibase_item\":\"Q333\"},\"contentmodel\":\"wikitext\",\"pagelanguage\":\"zh\",\"pagelanguagehtmlcode\":\"zh\",\"pagelanguagedir\":\"ltr\",\"touched\":\"2026-09-19T12:13:47Z\",\"lastrevid\":94163358,\"length\":82282,\"description\":\"觀察和研究宇宙間天體的學科\",\"descriptionsource\":\"central\"}]}}"
+}

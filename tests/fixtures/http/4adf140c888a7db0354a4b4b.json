@@ -1,0 +1,5 @@
+{
+ "url": "https://en.wikipedia.org/w/api.php?action=query&format=json&formatversion=2&ppprop=wikibase_item%7Cdisambiguation&prop=pageprops%7Cinfo%7Cdescription&redirects=1&titles=ketogenic+diet",
+ "status": 200,
+ "body": "{\"batchcomplete\":true,\"query\":{\"normalized\":[{\"fromencoded\":false,\"from\":\"ketogenic diet\",\"to\":\"Ketogenic diet\"}],\"pages\":[{\"pageid\":791546,\"ns\":0,\"title\":\"Ketogenic diet\",\"pageprops\":{\"wikibase_item\":\"Q1070684\"},\"contentmodel\":\"wikitext\",\"pagelanguage\":\"en\",\"pagelanguagehtmlcode\":\"en\",\"pagelanguagedir\":\"ltr\",\"touched\":\"2026-09-27T18:06:42Z\",\"lastrevid\":1372793940,\"length\":93288,\"description\":\"High-fat dietary therapy for epilepsy\",\"descriptionsource\":\"local\"}]}}"
+}

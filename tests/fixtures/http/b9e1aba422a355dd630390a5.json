@@ -1,0 +1,5 @@
+{
+ "url": "https://es.wikipedia.org/w/api.php?action=query&format=json&formatversion=2&pageids=261&prop=redirects&rdlimit=max&rdnamespace=0&rdprop=title",
+ "status": 200,
+ "body": "{\"batchcomplete\":true,\"query\":{\"pages\":[{\"pageid\":261,\"ns\":0,\"title\":\"Astronomía\",\"redirects\":[{\"ns\":0,\"title\":\"Astronomía Y Astrofísica\"},{\"ns\":0,\"title\":\"Astronomía y Astrofísica\"},{\"ns\":0,\"title\":\"Ciencias del espacio\"},{\"ns\":0,\"title\":\"Astronomia\"},{\"ns\":0,\"title\":\"Astronómico\"},{\"ns\":0,\"title\":\"Predicciones astronómicas\"},{\"ns\":0,\"title\":\"Astronómica\"},{\"ns\":0,\"title\":\"Astronomica\"},{\"ns\":0,\"title\":\"Astronomico\"},{\"ns\":0,\"title\":\"Astronomia Y Astrofisica\"},{\"ns\":0,\"title\":\"Astronomia y Astrofisica\"},{\"ns\":0,\"title\":\"Predicciones astronomicas\"},{\"ns\":0,\"title\":\"Astronomia Y Astrofísica\"},{\"ns\":0,\"title\":\"Astronomia y Astrofísica\"},{\"ns\":0,\"title\":\"Astronomía moderna\"},{\"ns\":0,\"title\":\"Astronomia moderna\"},{\"ns\":0,\"title\":\"Astronómicos\"}]}]},\"limits\":{\"redirects\":500}}"
+}

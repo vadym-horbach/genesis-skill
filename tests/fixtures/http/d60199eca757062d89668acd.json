@@ -1,0 +1,5 @@
+{
+ "url": "https://cs.wikipedia.org/w/api.php?action=query&format=json&formatversion=2&pageids=200131&prop=revisions&rvdir=newer&rvlimit=1&rvprop=timestamp",
+ "status": 200,
+ "body": "{\"continue\":{\"rvcontinue\":\"20070418124122|1409228\",\"continue\":\"||\"},\"query\":{\"pages\":[{\"pageid\":200131,\"ns\":0,\"title\":\"Půst\",\"revisions\":[{\"timestamp\":\"2007-04-12T08:34:18Z\"}]}]}}"
+}

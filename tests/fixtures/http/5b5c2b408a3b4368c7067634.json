@@ -1,0 +1,5 @@
+{
+ "url": "https://wikimedia.org/api/rest_v1/metrics/bytes-difference/net/per-page/cs.wikipedia/P%C5%AFst/all-editor-types/monthly/20240901/20260901",
+ "status": 200,
+ "body": "{\"items\":[{\"project\":\"cs.wikipedia\",\"page-title\":\"Půst\",\"editor-type\":\"all-editor-types\",\"granularity\":\"monthly\",\"results\":[{\"timestamp\":\"2025-03-01T00:00:00.000Z\",\"net_bytes_diff\":1343},{\"timestamp\":\"2025-04-01T00:00:00.000Z\",\"net_bytes_diff\":172},{\"timestamp\":\"2026-04-01T00:00:00.000Z\",\"net_bytes_diff\":243}]}]}"
+}

@@ -1,0 +1,5 @@
+{
+ "url": "https://cs.wikipedia.org/w/api.php?action=query&format=json&formatversion=2&pageids=1632302&prop=redirects&rdlimit=max&rdnamespace=0&rdprop=title",
+ "status": 200,
+ "body": "{\"batchcomplete\":true,\"query\":{\"pages\":[{\"pageid\":1632302,\"ns\":0,\"title\":\"Přerušovaný půst\"}]},\"limits\":{\"redirects\":500}}"
+}

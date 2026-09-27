@@ -1,0 +1,5 @@
+{
+ "url": "https://cs.wikipedia.org/w/api.php?action=query&format=json&formatversion=2&ppprop=wikibase_item%7Cdisambiguation&prop=pageprops%7Cinfo%7Cdescription&redirects=1&titles=Ketogenn%C3%AD+dieta",
+ "status": 200,
+ "body": "{\"batchcomplete\":true,\"query\":{\"pages\":[{\"pageid\":720170,\"ns\":0,\"title\":\"Ketogenní dieta\",\"pageprops\":{\"wikibase_item\":\"Q1070684\"},\"contentmodel\":\"wikitext\",\"pagelanguage\":\"cs\",\"pagelanguagehtmlcode\":\"cs\",\"pagelanguagedir\":\"ltr\",\"touched\":\"2026-09-15T12:19:30Z\",\"lastrevid\":25729144,\"length\":42193,\"description\":\"dieta s vysokým obsahem tuku\",\"descriptionsource\":\"central\"}]}}"
+}

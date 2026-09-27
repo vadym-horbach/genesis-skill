@@ -1,0 +1,5 @@
+{
+ "url": "https://cs.wikipedia.org/w/api.php?action=query&format=json&formatversion=2&pageids=200131&prop=redirects&rdlimit=max&rdnamespace=0&rdprop=title",
+ "status": 200,
+ "body": "{\"batchcomplete\":true,\"query\":{\"pages\":[{\"pageid\":200131,\"ns\":0,\"title\":\"Půst\",\"redirects\":[{\"ns\":0,\"title\":\"Postní jídlo\"}]}]},\"limits\":{\"redirects\":500}}"
+}

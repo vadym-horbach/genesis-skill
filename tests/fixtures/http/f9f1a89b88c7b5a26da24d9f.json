@@ -1,0 +1,5 @@
+{
+ "url": "https://wikimedia.org/api/rest_v1/metrics/bytes-difference/net/per-page/cs.wikipedia/P%C5%99eru%C5%A1ovan%C3%BD_p%C5%AFst/all-editor-types/monthly/20240901/20260901",
+ "status": 200,
+ "body": "{\"items\":[{\"project\":\"cs.wikipedia\",\"page-title\":\"Přerušovaný_půst\",\"editor-type\":\"all-editor-types\",\"granularity\":\"monthly\",\"results\":[{\"timestamp\":\"2025-02-01T00:00:00.000Z\",\"net_bytes_diff\":2235},{\"timestamp\":\"2025-11-01T00:00:00.000Z\",\"net_bytes_diff\":309},{\"timestamp\":\"2026-06-01T00:00:00.000Z\",\"net_bytes_diff\":340}]}]}"
+}

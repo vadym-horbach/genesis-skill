@@ -1,0 +1,5 @@
+{
+ "url": "https://en.wikipedia.org/w/api.php?action=query&format=json&formatversion=2&ppprop=wikibase_item%7Cdisambiguation&prop=pageprops%7Cinfo%7Cdescription&redirects=1&titles=astronomy",
+ "status": 200,
+ "body": "{\"batchcomplete\":true,\"query\":{\"normalized\":[{\"fromencoded\":false,\"from\":\"astronomy\",\"to\":\"Astronomy\"}],\"pages\":[{\"pageid\":50650,\"ns\":0,\"title\":\"Astronomy\",\"pageprops\":{\"wikibase_item\":\"Q333\"},\"contentmodel\":\"wikitext\",\"pagelanguage\":\"en\",\"pagelanguagehtmlcode\":\"en\",\"pagelanguagedir\":\"ltr\",\"touched\":\"2026-09-27T18:51:13Z\",\"lastrevid\":1375986678,\"length\":94882,\"description\":\"Scientific study of celestial objects\",\"descriptionsource\":\"local\"}]}}"
+}

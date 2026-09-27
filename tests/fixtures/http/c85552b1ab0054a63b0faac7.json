@@ -1,0 +1,5 @@
+{
+ "url": "https://it.wikipedia.org/w/api.php?action=query&format=json&formatversion=2&pageids=9&prop=redirects&rdlimit=max&rdnamespace=0&rdprop=title",
+ "status": 200,
+ "body": "{\"batchcomplete\":true,\"query\":{\"pages\":[{\"pageid\":9,\"ns\":0,\"title\":\"Astronomia\"}]},\"limits\":{\"redirects\":500}}"
+}

@@ -1,0 +1,5 @@
+{
+ "url": "https://ru.wikipedia.org/w/api.php?action=query&format=json&formatversion=2&pageids=588&prop=revisions&rvdir=newer&rvlimit=1&rvprop=timestamp",
+ "status": 200,
+ "body": "{\"continue\":{\"rvcontinue\":\"20030625085523|1098\",\"continue\":\"||\"},\"query\":{\"pages\":[{\"pageid\":588,\"ns\":0,\"title\":\"Астрономия\",\"revisions\":[{\"timestamp\":\"2003-06-25T08:54:46Z\"}]}]}}"
+}

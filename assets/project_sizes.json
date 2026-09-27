@@ -1,0 +1,1400 @@
+{
+ "generated_for_months": [
+  "2025-09",
+  "2026-08"
+ ],
+ "projects": {
+  "en": {
+   "project": "en.wikipedia",
+   "views_12m": 81082016651
+  },
+  "ja": {
+   "project": "ja.wikipedia",
+   "views_12m": 10543536620
+  },
+  "de": {
+   "project": "de.wikipedia",
+   "views_12m": 8459095961
+  },
+  "ru": {
+   "project": "ru.wikipedia",
+   "views_12m": 7820100601
+  },
+  "fr": {
+   "project": "fr.wikipedia",
+   "views_12m": 7131656452
+  },
+  "es": {
+   "project": "es.wikipedia",
+   "views_12m": 6532972497
+  },
+  "zh": {
+   "project": "zh.wikipedia",
+   "views_12m": 4917619724
+  },
+  "it": {
+   "project": "it.wikipedia",
+   "views_12m": 4592034690
+  },
+  "pl": {
+   "project": "pl.wikipedia",
+   "views_12m": 2256906972
+  },
+  "pt": {
+   "project": "pt.wikipedia",
+   "views_12m": 2152053810
+  },
+  "fa": {
+   "project": "fa.wikipedia",
+   "views_12m": 1579396463
+  },
+  "ar": {
+   "project": "ar.wikipedia",
+   "views_12m": 1359319581
+  },
+  "tr": {
+   "project": "tr.wikipedia",
+   "views_12m": 1305805509
+  },
+  "nl": {
+   "project": "nl.wikipedia",
+   "views_12m": 1226455413
+  },
+  "sv": {
+   "project": "sv.wikipedia",
+   "views_12m": 812578083
+  },
+  "id": {
+   "project": "id.wikipedia",
+   "views_12m": 806098711
+  },
+  "cs": {
+   "project": "cs.wikipedia",
+   "views_12m": 713223504
+  },
+  "ko": {
+   "project": "ko.wikipedia",
+   "views_12m": 684594044
+  },
+  "uk": {
+   "project": "uk.wikipedia",
+   "views_12m": 678504414
+  },
+  "fi": {
+   "project": "fi.wikipedia",
+   "views_12m": 593564688
+  },
+  "he": {
+   "project": "he.wikipedia",
+   "views_12m": 590128264
+  },
+  "vi": {
+   "project": "vi.wikipedia",
+   "views_12m": 589911636
+  },
+  "hu": {
+   "project": "hu.wikipedia",
+   "views_12m": 541787997
+  },
+  "th": {
+   "project": "th.wikipedia",
+   "views_12m": 364938694
+  },
+  "el": {
+   "project": "el.wikipedia",
+   "views_12m": 357268150
+  },
+  "ro": {
+   "project": "ro.wikipedia",
+   "views_12m": 330038380
+  },
+  "sr": {
+   "project": "sr.wikipedia",
+   "views_12m": 308077840
+  },
+  "no": {
+   "project": "no.wikipedia",
+   "views_12m": 305272934
+  },
+  "simple": {
+   "project": "simple.wikipedia",
+   "views_12m": 250084552
+  },
+  "bg": {
+   "project": "bg.wikipedia",
+   "views_12m": 237324461
+  },
+  "da": {
+   "project": "da.wikipedia",
+   "views_12m": 226541781
+  },
+  "hi": {
+   "project": "hi.wikipedia",
+   "views_12m": 194302658
+  },
+  "ca": {
+   "project": "ca.wikipedia",
+   "views_12m": 187709574
+  },
+  "hr": {
+   "project": "hr.wikipedia",
+   "views_12m": 175100622
+  },
+  "ms": {
+   "project": "ms.wikipedia",
+   "views_12m": 161739050
+  },
+  "sk": {
+   "project": "sk.wikipedia",
+   "views_12m": 145267540
+  },
+  "bn": {
+   "project": "bn.wikipedia",
+   "views_12m": 122115997
+  },
+  "ceb": {
+   "project": "ceb.wikipedia",
+   "views_12m": 117278650
+  },
+  "az": {
+   "project": "az.wikipedia",
+   "views_12m": 108825177
+  },
+  "et": {
+   "project": "et.wikipedia",
+   "views_12m": 96630041
+  },
+  "lt": {
+   "project": "lt.wikipedia",
+   "views_12m": 81435856
+  },
+  "sl": {
+   "project": "sl.wikipedia",
+   "views_12m": 80524071
+  },
+  "uz": {
+   "project": "uz.wikipedia",
+   "views_12m": 76752593
+  },
+  "ta": {
+   "project": "ta.wikipedia",
+   "views_12m": 75836489
+  },
+  "sh": {
+   "project": "sh.wikipedia",
+   "views_12m": 74752734
+  },
+  "hy": {
+   "project": "hy.wikipedia",
+   "views_12m": 69566511
+  },
+  "ka": {
+   "project": "ka.wikipedia",
+   "views_12m": 69219072
+  },
+  "arz": {
+   "project": "arz.wikipedia",
+   "views_12m": 68848534
+  },
+  "zh-yue": {
+   "project": "zh-yue.wikipedia",
+   "views_12m": 60653177
+  },
+  "lv": {
+   "project": "lv.wikipedia",
+   "views_12m": 54726504
+  },
+  "kk": {
+   "project": "kk.wikipedia",
+   "views_12m": 53243732
+  },
+  "eu": {
+   "project": "eu.wikipedia",
+   "views_12m": 50591479
+  },
+  "ur": {
+   "project": "ur.wikipedia",
+   "views_12m": 46230364
+  },
+  "te": {
+   "project": "te.wikipedia",
+   "views_12m": 46114868
+  },
+  "sq": {
+   "project": "sq.wikipedia",
+   "views_12m": 40765261
+  },
+  "mr": {
+   "project": "mr.wikipedia",
+   "views_12m": 40564515
+  },
+  "war": {
+   "project": "war.wikipedia",
+   "views_12m": 40283109
+  },
+  "ml": {
+   "project": "ml.wikipedia",
+   "views_12m": 40213051
+  },
+  "eo": {
+   "project": "eo.wikipedia",
+   "views_12m": 36717154
+  },
+  "gl": {
+   "project": "gl.wikipedia",
+   "views_12m": 34912801
+  },
+  "sw": {
+   "project": "sw.wikipedia",
+   "views_12m": 33736877
+  },
+  "bs": {
+   "project": "bs.wikipedia",
+   "views_12m": 33146965
+  },
+  "mk": {
+   "project": "mk.wikipedia",
+   "views_12m": 31839431
+  },
+  "sco": {
+   "project": "sco.wikipedia",
+   "views_12m": 30950768
+  },
+  "af": {
+   "project": "af.wikipedia",
+   "views_12m": 29227582
+  },
+  "zh-min-nan": {
+   "project": "zh-min-nan.wikipedia",
+   "views_12m": 28065577
+  },
+  "tl": {
+   "project": "tl.wikipedia",
+   "views_12m": 26547509
+  },
+  "vec": {
+   "project": "vec.wikipedia",
+   "views_12m": 24770240
+  },
+  "nn": {
+   "project": "nn.wikipedia",
+   "views_12m": 24654932
+  },
+  "ha": {
+   "project": "ha.wikipedia",
+   "views_12m": 24545831
+  },
+  "kn": {
+   "project": "kn.wikipedia",
+   "views_12m": 24067069
+  },
+  "ast": {
+   "project": "ast.wikipedia",
+   "views_12m": 23905133
+  },
+  "la": {
+   "project": "la.wikipedia",
+   "views_12m": 23408758
+  },
+  "tum": {
+   "project": "tum.wikipedia",
+   "views_12m": 22066172
+  },
+  "is": {
+   "project": "is.wikipedia",
+   "views_12m": 22031537
+  },
+  "my": {
+   "project": "my.wikipedia",
+   "views_12m": 21595273
+  },
+  "cy": {
+   "project": "cy.wikipedia",
+   "views_12m": 20722476
+  },
+  "wuu": {
+   "project": "wuu.wikipedia",
+   "views_12m": 19564500
+  },
+  "be": {
+   "project": "be.wikipedia",
+   "views_12m": 19527703
+  },
+  "ku": {
+   "project": "ku.wikipedia",
+   "views_12m": 18062510
+  },
+  "oc": {
+   "project": "oc.wikipedia",
+   "views_12m": 17122488
+  },
+  "mn": {
+   "project": "mn.wikipedia",
+   "views_12m": 17078340
+  },
+  "ky": {
+   "project": "ky.wikipedia",
+   "views_12m": 15895004
+  },
+  "si": {
+   "project": "si.wikipedia",
+   "views_12m": 15452211
+  },
+  "ga": {
+   "project": "ga.wikipedia",
+   "views_12m": 15107603
+  },
+  "hak": {
+   "project": "hak.wikipedia",
+   "views_12m": 14875350
+  },
+  "br": {
+   "project": "br.wikipedia",
+   "views_12m": 14554435
+  },
+  "ce": {
+   "project": "ce.wikipedia",
+   "views_12m": 14000811
+  },
+  "hif": {
+   "project": "hif.wikipedia",
+   "views_12m": 13715146
+  },
+  "tt": {
+   "project": "tt.wikipedia",
+   "views_12m": 13456075
+  },
+  "tg": {
+   "project": "tg.wikipedia",
+   "views_12m": 13251903
+  },
+  "an": {
+   "project": "an.wikipedia",
+   "views_12m": 12894130
+  },
+  "lmo": {
+   "project": "lmo.wikipedia",
+   "views_12m": 12657088
+  },
+  "lb": {
+   "project": "lb.wikipedia",
+   "views_12m": 12378865
+  },
+  "pms": {
+   "project": "pms.wikipedia",
+   "views_12m": 12314758
+  },
+  "vo": {
+   "project": "vo.wikipedia",
+   "views_12m": 12254297
+  },
+  "so": {
+   "project": "so.wikipedia",
+   "views_12m": 11740087
+  },
+  "mg": {
+   "project": "mg.wikipedia",
+   "views_12m": 11727831
+  },
+  "kw": {
+   "project": "kw.wikipedia",
+   "views_12m": 11726100
+  },
+  "ia": {
+   "project": "ia.wikipedia",
+   "views_12m": 11577909
+  },
+  "fj": {
+   "project": "fj.wikipedia",
+   "views_12m": 11477585
+  },
+  "as": {
+   "project": "as.wikipedia",
+   "views_12m": 11452690
+  },
+  "als": {
+   "project": "als.wikipedia",
+   "views_12m": 11165746
+  },
+  "azb": {
+   "project": "azb.wikipedia",
+   "views_12m": 11074848
+  },
+  "ckb": {
+   "project": "ckb.wikipedia",
+   "views_12m": 11038144
+  },
+  "lld": {
+   "project": "lld.wikipedia",
+   "views_12m": 10903992
+  },
+  "gu": {
+   "project": "gu.wikipedia",
+   "views_12m": 10616988
+  },
+  "be-tarask": {
+   "project": "be-tarask.wikipedia",
+   "views_12m": 10473598
+  },
+  "min": {
+   "project": "min.wikipedia",
+   "views_12m": 10401514
+  },
+  "zh-classical": {
+   "project": "zh-classical.wikipedia",
+   "views_12m": 10317057
+  },
+  "ig": {
+   "project": "ig.wikipedia",
+   "views_12m": 9548398
+  },
+  "km": {
+   "project": "km.wikipedia",
+   "views_12m": 9479264
+  },
+  "pa": {
+   "project": "pa.wikipedia",
+   "views_12m": 9350050
+  },
+  "rw": {
+   "project": "rw.wikipedia",
+   "views_12m": 9298746
+  },
+  "jv": {
+   "project": "jv.wikipedia",
+   "views_12m": 9242178
+  },
+  "szy": {
+   "project": "szy.wikipedia",
+   "views_12m": 8986640
+  },
+  "diq": {
+   "project": "diq.wikipedia",
+   "views_12m": 8962092
+  },
+  "to": {
+   "project": "to.wikipedia",
+   "views_12m": 8843335
+  },
+  "ne": {
+   "project": "ne.wikipedia",
+   "views_12m": 8840934
+  },
+  "io": {
+   "project": "io.wikipedia",
+   "views_12m": 8638408
+  },
+  "fy": {
+   "project": "fy.wikipedia",
+   "views_12m": 8231542
+  },
+  "zgh": {
+   "project": "zgh.wikipedia",
+   "views_12m": 7617264
+  },
+  "ie": {
+   "project": "ie.wikipedia",
+   "views_12m": 7170261
+  },
+  "bar": {
+   "project": "bar.wikipedia",
+   "views_12m": 7013750
+  },
+  "bcl": {
+   "project": "bcl.wikipedia",
+   "views_12m": 6986313
+  },
+  "nds": {
+   "project": "nds.wikipedia",
+   "views_12m": 6957847
+  },
+  "tn": {
+   "project": "tn.wikipedia",
+   "views_12m": 6858716
+  },
+  "tok": {
+   "project": "tok.wikipedia",
+   "views_12m": 6763950
+  },
+  "haw": {
+   "project": "haw.wikipedia",
+   "views_12m": 6542748
+  },
+  "scn": {
+   "project": "scn.wikipedia",
+   "views_12m": 6522673
+  },
+  "pam": {
+   "project": "pam.wikipedia",
+   "views_12m": 6488756
+  },
+  "nso": {
+   "project": "nso.wikipedia",
+   "views_12m": 6416717
+  },
+  "ban": {
+   "project": "ban.wikipedia",
+   "views_12m": 6397625
+  },
+  "su": {
+   "project": "su.wikipedia",
+   "views_12m": 6264620
+  },
+  "trv": {
+   "project": "trv.wikipedia",
+   "views_12m": 5883727
+  },
+  "szl": {
+   "project": "szl.wikipedia",
+   "views_12m": 5856790
+  },
+  "dag": {
+   "project": "dag.wikipedia",
+   "views_12m": 5846047
+  },
+  "ami": {
+   "project": "ami.wikipedia",
+   "views_12m": 5824407
+  },
+  "kab": {
+   "project": "kab.wikipedia",
+   "views_12m": 5791815
+  },
+  "frr": {
+   "project": "frr.wikipedia",
+   "views_12m": 5738625
+  },
+  "gpe": {
+   "project": "gpe.wikipedia",
+   "views_12m": 5681234
+  },
+  "avk": {
+   "project": "avk.wikipedia",
+   "views_12m": 5661352
+  },
+  "bh": {
+   "project": "bh.wikipedia",
+   "views_12m": 5531379
+  },
+  "gan": {
+   "project": "gan.wikipedia",
+   "views_12m": 5416276
+  },
+  "ba": {
+   "project": "ba.wikipedia",
+   "views_12m": 5412936
+  },
+  "cv": {
+   "project": "cv.wikipedia",
+   "views_12m": 5356305
+  },
+  "pnb": {
+   "project": "pnb.wikipedia",
+   "views_12m": 5335758
+  },
+  "or": {
+   "project": "or.wikipedia",
+   "views_12m": 5298677
+  },
+  "ang": {
+   "project": "ang.wikipedia",
+   "views_12m": 5114467
+  },
+  "ace": {
+   "project": "ace.wikipedia",
+   "views_12m": 5058448
+  },
+  "am": {
+   "project": "am.wikipedia",
+   "views_12m": 5042410
+  },
+  "mzn": {
+   "project": "mzn.wikipedia",
+   "views_12m": 4999591
+  },
+  "nap": {
+   "project": "nap.wikipedia",
+   "views_12m": 4978606
+  },
+  "new": {
+   "project": "new.wikipedia",
+   "views_12m": 4954534
+  },
+  "ik": {
+   "project": "ik.wikipedia",
+   "views_12m": 4918342
+  },
+  "gd": {
+   "project": "gd.wikipedia",
+   "views_12m": 4879765
+  },
+  "li": {
+   "project": "li.wikipedia",
+   "views_12m": 4752505
+  },
+  "csb": {
+   "project": "csb.wikipedia",
+   "views_12m": 4735451
+  },
+  "gv": {
+   "project": "gv.wikipedia",
+   "views_12m": 4681995
+  },
+  "zu": {
+   "project": "zu.wikipedia",
+   "views_12m": 4649530
+  },
+  "fo": {
+   "project": "fo.wikipedia",
+   "views_12m": 4625903
+  },
+  "sn": {
+   "project": "sn.wikipedia",
+   "views_12m": 4562925
+  },
+  "ff": {
+   "project": "ff.wikipedia",
+   "views_12m": 4483736
+  },
+  "sc": {
+   "project": "sc.wikipedia",
+   "views_12m": 4482513
+  },
+  "cdo": {
+   "project": "cdo.wikipedia",
+   "views_12m": 4444328
+  },
+  "tpi": {
+   "project": "tpi.wikipedia",
+   "views_12m": 4433775
+  },
+  "roa-tara": {
+   "project": "roa-tara.wikipedia",
+   "views_12m": 4405099
+  },
+  "ary": {
+   "project": "ary.wikipedia",
+   "views_12m": 4353247
+  },
+  "tk": {
+   "project": "tk.wikipedia",
+   "views_12m": 4351230
+  },
+  "nov": {
+   "project": "nov.wikipedia",
+   "views_12m": 4301356
+  },
+  "lij": {
+   "project": "lij.wikipedia",
+   "views_12m": 4240516
+  },
+  "dv": {
+   "project": "dv.wikipedia",
+   "views_12m": 4155771
+  },
+  "pcd": {
+   "project": "pcd.wikipedia",
+   "views_12m": 4123532
+  },
+  "yi": {
+   "project": "yi.wikipedia",
+   "views_12m": 4083473
+  },
+  "ki": {
+   "project": "ki.wikipedia",
+   "views_12m": 4069196
+  },
+  "qu": {
+   "project": "qu.wikipedia",
+   "views_12m": 4033564
+  },
+  "ht": {
+   "project": "ht.wikipedia",
+   "views_12m": 3943255
+  },
+  "tw": {
+   "project": "tw.wikipedia",
+   "views_12m": 3939439
+  },
+  "mni": {
+   "project": "mni.wikipedia",
+   "views_12m": 3818081
+  },
+  "mi": {
+   "project": "mi.wikipedia",
+   "views_12m": 3773238
+  },
+  "yo": {
+   "project": "yo.wikipedia",
+   "views_12m": 3737946
+  },
+  "zea": {
+   "project": "zea.wikipedia",
+   "views_12m": 3667605
+  },
+  "ee": {
+   "project": "ee.wikipedia",
+   "views_12m": 3595871
+  },
+  "sah": {
+   "project": "sah.wikipedia",
+   "views_12m": 3595225
+  },
+  "crh": {
+   "project": "crh.wikipedia",
+   "views_12m": 3589539
+  },
+  "bi": {
+   "project": "bi.wikipedia",
+   "views_12m": 3567082
+  },
+  "nds-nl": {
+   "project": "nds-nl.wikipedia",
+   "views_12m": 3541896
+  },
+  "bug": {
+   "project": "bug.wikipedia",
+   "views_12m": 3493863
+  },
+  "ilo": {
+   "project": "ilo.wikipedia",
+   "views_12m": 3362008
+  },
+  "wa": {
+   "project": "wa.wikipedia",
+   "views_12m": 3346123
+  },
+  "os": {
+   "project": "os.wikipedia",
+   "views_12m": 3344640
+  },
+  "ps": {
+   "project": "ps.wikipedia",
+   "views_12m": 3250875
+  },
+  "vls": {
+   "project": "vls.wikipedia",
+   "views_12m": 3225090
+  },
+  "bo": {
+   "project": "bo.wikipedia",
+   "views_12m": 3168321
+  },
+  "chy": {
+   "project": "chy.wikipedia",
+   "views_12m": 3149783
+  },
+  "shi": {
+   "project": "shi.wikipedia",
+   "views_12m": 3140048
+  },
+  "kaa": {
+   "project": "kaa.wikipedia",
+   "views_12m": 3134353
+  },
+  "sd": {
+   "project": "sd.wikipedia",
+   "views_12m": 3090431
+  },
+  "awa": {
+   "project": "awa.wikipedia",
+   "views_12m": 3079665
+  },
+  "hsb": {
+   "project": "hsb.wikipedia",
+   "views_12m": 3078916
+  },
+  "kg": {
+   "project": "kg.wikipedia",
+   "views_12m": 3039663
+  },
+  "bjn": {
+   "project": "bjn.wikipedia",
+   "views_12m": 2933722
+  },
+  "chr": {
+   "project": "chr.wikipedia",
+   "views_12m": 2884025
+  },
+  "pap": {
+   "project": "pap.wikipedia",
+   "views_12m": 2805171
+  },
+  "xh": {
+   "project": "xh.wikipedia",
+   "views_12m": 2795097
+  },
+  "bpy": {
+   "project": "bpy.wikipedia",
+   "views_12m": 2790824
+  },
+  "ts": {
+   "project": "ts.wikipedia",
+   "views_12m": 2756870
+  },
+  "map-bms": {
+   "project": "map-bms.wikipedia",
+   "views_12m": 2753284
+  },
+  "mt": {
+   "project": "mt.wikipedia",
+   "views_12m": 2747201
+  },
+  "mai": {
+   "project": "mai.wikipedia",
+   "views_12m": 2740447
+  },
+  "sa": {
+   "project": "sa.wikipedia",
+   "views_12m": 2705195
+  },
+  "co": {
+   "project": "co.wikipedia",
+   "views_12m": 2659057
+  },
+  "stq": {
+   "project": "stq.wikipedia",
+   "views_12m": 2589740
+  },
+  "vep": {
+   "project": "vep.wikipedia",
+   "views_12m": 2533364
+  },
+  "xmf": {
+   "project": "xmf.wikipedia",
+   "views_12m": 2532738
+  },
+  "lfn": {
+   "project": "lfn.wikipedia",
+   "views_12m": 2526910
+  },
+  "lad": {
+   "project": "lad.wikipedia",
+   "views_12m": 2501108
+  },
+  "se": {
+   "project": "se.wikipedia",
+   "views_12m": 2494834
+  },
+  "lo": {
+   "project": "lo.wikipedia",
+   "views_12m": 2494141
+  },
+  "ny": {
+   "project": "ny.wikipedia",
+   "views_12m": 2446930
+  },
+  "ab": {
+   "project": "ab.wikipedia",
+   "views_12m": 2443976
+  },
+  "smn": {
+   "project": "smn.wikipedia",
+   "views_12m": 2437706
+  },
+  "gor": {
+   "project": "gor.wikipedia",
+   "views_12m": 2411814
+  },
+  "om": {
+   "project": "om.wikipedia",
+   "views_12m": 2408784
+  },
+  "eml": {
+   "project": "eml.wikipedia",
+   "views_12m": 2382573
+  },
+  "tly": {
+   "project": "tly.wikipedia",
+   "views_12m": 2374633
+  },
+  "lg": {
+   "project": "lg.wikipedia",
+   "views_12m": 2354284
+  },
+  "sat": {
+   "project": "sat.wikipedia",
+   "views_12m": 2331283
+  },
+  "fur": {
+   "project": "fur.wikipedia",
+   "views_12m": 2326823
+  },
+  "ss": {
+   "project": "ss.wikipedia",
+   "views_12m": 2320545
+  },
+  "ks": {
+   "project": "ks.wikipedia",
+   "views_12m": 2275891
+  },
+  "kcg": {
+   "project": "kcg.wikipedia",
+   "views_12m": 2255305
+  },
+  "frp": {
+   "project": "frp.wikipedia",
+   "views_12m": 2219944
+  },
+  "rue": {
+   "project": "rue.wikipedia",
+   "views_12m": 2208328
+  },
+  "shn": {
+   "project": "shn.wikipedia",
+   "views_12m": 2193937
+  },
+  "bat-smg": {
+   "project": "bat-smg.wikipedia",
+   "views_12m": 2168613
+  },
+  "gn": {
+   "project": "gn.wikipedia",
+   "views_12m": 2160961
+  },
+  "tet": {
+   "project": "tet.wikipedia",
+   "views_12m": 2152107
+  },
+  "pcm": {
+   "project": "pcm.wikipedia",
+   "views_12m": 2096188
+  },
+  "pag": {
+   "project": "pag.wikipedia",
+   "views_12m": 2008864
+  },
+  "ug": {
+   "project": "ug.wikipedia",
+   "views_12m": 1996489
+  },
+  "glk": {
+   "project": "glk.wikipedia",
+   "views_12m": 1988861
+  },
+  "ay": {
+   "project": "ay.wikipedia",
+   "views_12m": 1986208
+  },
+  "ext": {
+   "project": "ext.wikipedia",
+   "views_12m": 1943296
+  },
+  "nrm": {
+   "project": "nrm.wikipedia",
+   "views_12m": 1899536
+  },
+  "fat": {
+   "project": "fat.wikipedia",
+   "views_12m": 1895928
+  },
+  "hyw": {
+   "project": "hyw.wikipedia",
+   "views_12m": 1855592
+  },
+  "iu": {
+   "project": "iu.wikipedia",
+   "views_12m": 1800121
+  },
+  "dsb": {
+   "project": "dsb.wikipedia",
+   "views_12m": 1798743
+  },
+  "pfl": {
+   "project": "pfl.wikipedia",
+   "views_12m": 1773524
+  },
+  "rn": {
+   "project": "rn.wikipedia",
+   "views_12m": 1753436
+  },
+  "iba": {
+   "project": "iba.wikipedia",
+   "views_12m": 1752848
+  },
+  "ksh": {
+   "project": "ksh.wikipedia",
+   "views_12m": 1745445
+  },
+  "fiu-vro": {
+   "project": "fiu-vro.wikipedia",
+   "views_12m": 1742586
+  },
+  "mhr": {
+   "project": "mhr.wikipedia",
+   "views_12m": 1727506
+  },
+  "st": {
+   "project": "st.wikipedia",
+   "views_12m": 1724304
+  },
+  "cbk-zam": {
+   "project": "cbk-zam.wikipedia",
+   "views_12m": 1695572
+  },
+  "gag": {
+   "project": "gag.wikipedia",
+   "views_12m": 1666145
+  },
+  "rm": {
+   "project": "rm.wikipedia",
+   "views_12m": 1663680
+  },
+  "olo": {
+   "project": "olo.wikipedia",
+   "views_12m": 1640241
+  },
+  "tcy": {
+   "project": "tcy.wikipedia",
+   "views_12m": 1623378
+  },
+  "xal": {
+   "project": "xal.wikipedia",
+   "views_12m": 1610092
+  },
+  "arc": {
+   "project": "arc.wikipedia",
+   "views_12m": 1596656
+  },
+  "ln": {
+   "project": "ln.wikipedia",
+   "views_12m": 1596153
+  },
+  "mdf": {
+   "project": "mdf.wikipedia",
+   "views_12m": 1552280
+  },
+  "knc": {
+   "project": "knc.wikipedia",
+   "views_12m": 1534636
+  },
+  "wo": {
+   "project": "wo.wikipedia",
+   "views_12m": 1528209
+  },
+  "nv": {
+   "project": "nv.wikipedia",
+   "views_12m": 1513834
+  },
+  "mad": {
+   "project": "mad.wikipedia",
+   "views_12m": 1510888
+  },
+  "kv": {
+   "project": "kv.wikipedia",
+   "views_12m": 1502538
+  },
+  "sm": {
+   "project": "sm.wikipedia",
+   "views_12m": 1479145
+  },
+  "tay": {
+   "project": "tay.wikipedia",
+   "views_12m": 1412122
+  },
+  "bew": {
+   "project": "bew.wikipedia",
+   "views_12m": 1383540
+  },
+  "pdc": {
+   "project": "pdc.wikipedia",
+   "views_12m": 1382035
+  },
+  "dga": {
+   "project": "dga.wikipedia",
+   "views_12m": 1366933
+  },
+  "dtp": {
+   "project": "dtp.wikipedia",
+   "views_12m": 1364409
+  },
+  "mwl": {
+   "project": "mwl.wikipedia",
+   "views_12m": 1357384
+  },
+  "za": {
+   "project": "za.wikipedia",
+   "views_12m": 1347040
+  },
+  "myv": {
+   "project": "myv.wikipedia",
+   "views_12m": 1331149
+  },
+  "udm": {
+   "project": "udm.wikipedia",
+   "views_12m": 1326446
+  },
+  "dty": {
+   "project": "dty.wikipedia",
+   "views_12m": 1296146
+  },
+  "kbp": {
+   "project": "kbp.wikipedia",
+   "views_12m": 1271226
+  },
+  "cu": {
+   "project": "cu.wikipedia",
+   "views_12m": 1268008
+  },
+  "got": {
+   "project": "got.wikipedia",
+   "views_12m": 1227488
+  },
+  "ann": {
+   "project": "ann.wikipedia",
+   "views_12m": 1215917
+  },
+  "av": {
+   "project": "av.wikipedia",
+   "views_12m": 1213440
+  },
+  "inh": {
+   "project": "inh.wikipedia",
+   "views_12m": 1210560
+  },
+  "anp": {
+   "project": "anp.wikipedia",
+   "views_12m": 1198728
+  },
+  "roa-rup": {
+   "project": "roa-rup.wikipedia",
+   "views_12m": 1197694
+  },
+  "guw": {
+   "project": "guw.wikipedia",
+   "views_12m": 1194465
+  },
+  "bxr": {
+   "project": "bxr.wikipedia",
+   "views_12m": 1190756
+  },
+  "skr": {
+   "project": "skr.wikipedia",
+   "views_12m": 1187517
+  },
+  "kge": {
+   "project": "kge.wikipedia",
+   "views_12m": 1187188
+  },
+  "dz": {
+   "project": "dz.wikipedia",
+   "views_12m": 1173693
+  },
+  "bbc": {
+   "project": "bbc.wikipedia",
+   "views_12m": 1171208
+  },
+  "mag": {
+   "project": "mag.wikipedia",
+   "views_12m": 1165334
+  },
+  "krc": {
+   "project": "krc.wikipedia",
+   "views_12m": 1160660
+  },
+  "ch": {
+   "project": "ch.wikipedia",
+   "views_12m": 1152148
+  },
+  "jbo": {
+   "project": "jbo.wikipedia",
+   "views_12m": 1131029
+  },
+  "lez": {
+   "project": "lez.wikipedia",
+   "views_12m": 1127533
+  },
+  "rmy": {
+   "project": "rmy.wikipedia",
+   "views_12m": 1114094
+  },
+  "jam": {
+   "project": "jam.wikipedia",
+   "views_12m": 1109686
+  },
+  "nqo": {
+   "project": "nqo.wikipedia",
+   "views_12m": 1088726
+  },
+  "nah": {
+   "project": "nah.wikipedia",
+   "views_12m": 1074535
+  },
+  "pnt": {
+   "project": "pnt.wikipedia",
+   "views_12m": 1034262
+  },
+  "gcr": {
+   "project": "gcr.wikipedia",
+   "views_12m": 1029943
+  },
+  "mrj": {
+   "project": "mrj.wikipedia",
+   "views_12m": 1010940
+  },
+  "gom": {
+   "project": "gom.wikipedia",
+   "views_12m": 1009480
+  },
+  "alt": {
+   "project": "alt.wikipedia",
+   "views_12m": 985127
+  },
+  "bm": {
+   "project": "bm.wikipedia",
+   "views_12m": 984608
+  },
+  "btm": {
+   "project": "btm.wikipedia",
+   "views_12m": 977708
+  },
+  "nia": {
+   "project": "nia.wikipedia",
+   "views_12m": 949089
+  },
+  "igl": {
+   "project": "igl.wikipedia",
+   "views_12m": 935190
+  },
+  "pi": {
+   "project": "pi.wikipedia",
+   "views_12m": 894223
+  },
+  "gur": {
+   "project": "gur.wikipedia",
+   "views_12m": 878228
+  },
+  "mnw": {
+   "project": "mnw.wikipedia",
+   "views_12m": 862494
+  },
+  "srn": {
+   "project": "srn.wikipedia",
+   "views_12m": 859649
+  },
+  "koi": {
+   "project": "koi.wikipedia",
+   "views_12m": 859304
+  },
+  "ty": {
+   "project": "ty.wikipedia",
+   "views_12m": 851482
+  },
+  "tyv": {
+   "project": "tyv.wikipedia",
+   "views_12m": 846286
+  },
+  "kus": {
+   "project": "kus.wikipedia",
+   "views_12m": 840410
+  },
+  "guc": {
+   "project": "guc.wikipedia",
+   "views_12m": 840361
+  },
+  "syl": {
+   "project": "syl.wikipedia",
+   "views_12m": 804661
+  },
+  "nup": {
+   "project": "nup.wikipedia",
+   "views_12m": 793599
+  },
+  "blk": {
+   "project": "blk.wikipedia",
+   "views_12m": 781595
+  },
+  "ltg": {
+   "project": "ltg.wikipedia",
+   "views_12m": 779321
+  },
+  "atj": {
+   "project": "atj.wikipedia",
+   "views_12m": 756578
+  },
+  "fon": {
+   "project": "fon.wikipedia",
+   "views_12m": 754683
+  },
+  "kbd": {
+   "project": "kbd.wikipedia",
+   "views_12m": 750421
+  },
+  "lbe": {
+   "project": "lbe.wikipedia",
+   "views_12m": 725173
+  },
+  "ve": {
+   "project": "ve.wikipedia",
+   "views_12m": 723821
+  },
+  "mos": {
+   "project": "mos.wikipedia",
+   "views_12m": 711304
+  },
+  "ady": {
+   "project": "ady.wikipedia",
+   "views_12m": 683292
+  },
+  "din": {
+   "project": "din.wikipedia",
+   "views_12m": 676034
+  },
+  "ti": {
+   "project": "ti.wikipedia",
+   "views_12m": 675817
+  },
+  "nr": {
+   "project": "nr.wikipedia",
+   "views_12m": 670877
+  },
+  "bdr": {
+   "project": "bdr.wikipedia",
+   "views_12m": 646515
+  },
+  "tdd": {
+   "project": "tdd.wikipedia",
+   "views_12m": 626636
+  },
+  "rki": {
+   "project": "rki.wikipedia",
+   "views_12m": 620158
+  },
+  "sg": {
+   "project": "sg.wikipedia",
+   "views_12m": 599179
+  },
+  "rsk": {
+   "project": "rsk.wikipedia",
+   "views_12m": 570496
+  },
+  "tig": {
+   "project": "tig.wikipedia",
+   "views_12m": 414615
+  },
+  "pwn": {
+   "project": "pwn.wikipedia",
+   "views_12m": 403822
+  },
+  "kaj": {
+   "project": "kaj.wikipedia",
+   "views_12m": 377899
+  },
+  "ppl": {
+   "project": "ppl.wikipedia",
+   "views_12m": 350010
+  },
+  "kai": {
+   "project": "kai.wikipedia",
+   "views_12m": 297174
+  },
+  "isv": {
+   "project": "isv.wikipedia",
+   "views_12m": 157099
+  },
+  "bol": {
+   "project": "bol.wikipedia",
+   "views_12m": 27744
+  }
+ }
+}

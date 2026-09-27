@@ -1,0 +1,5 @@
+{
+ "url": "https://uk.wikipedia.org/w/api.php?action=query&format=json&formatversion=2&ppprop=wikibase_item%7Cdisambiguation&prop=pageprops%7Cinfo%7Cdescription&redirects=1&titles=astronomy",
+ "status": 200,
+ "body": "{\"batchcomplete\":true,\"query\":{\"normalized\":[{\"fromencoded\":false,\"from\":\"astronomy\",\"to\":\"Astronomy\"}],\"redirects\":[{\"from\":\"Astronomy\",\"to\":\"Астрономія\"}],\"pages\":[{\"pageid\":827,\"ns\":0,\"title\":\"Астрономія\",\"pageprops\":{\"wikibase_item\":\"Q333\"},\"contentmodel\":\"wikitext\",\"pagelanguage\":\"uk\",\"pagelanguagehtmlcode\":\"uk\",\"pagelanguagedir\":\"ltr\",\"touched\":\"2026-09-24T22:53:48Z\",\"lastrevid\":48885850,\"length\":152992,\"description\":\"одна з найдавніших наук, що включає спостереження і пояснення подій, які відбуваються за межами Землі та її атмосфери\",\"descriptionsource\":\"central\"}]}}"
+}

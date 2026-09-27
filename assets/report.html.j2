@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Interest signals report</title>
+<style>
+  :root { --fg:#1d232b; --muted:#5b6571; --line:#dde2e8; --accent:#2a6fdb; --bg:#ffffff; --warn:#8a5a00; }
+  * { box-sizing:border-box; }
+  body { margin:0 auto; max-width:190mm; padding:10mm 8mm; font:12px/1.4 -apple-system,"Segoe UI",Roboto,sans-serif; color:var(--fg); background:var(--bg); }
+  h1 { font-size:18px; margin:0 0 4px; }
+  h2 { font-size:13px; margin:12px 0 4px; border-bottom:1px solid var(--line); padding-bottom:2px; }
+  .muted { color:var(--muted); }
+  table { width:100%; border-collapse:collapse; font-size:11px; }
+  th, td { text-align:left; padding:3px 4px; border-bottom:1px solid var(--line); vertical-align:top; }
+  th { color:var(--muted); font-weight:600; }
+  .num { text-align:right; font-variant-numeric:tabular-nums; }
+  .label { font-weight:600; }
+  .pareto { color:var(--accent); }
+  img { width:100%; height:auto; }
+  ul { margin:2px 0 0 16px; padding:0; }
+  li { margin:1px 0; }
+  .warn li { color:var(--warn); }
+  footer { margin-top:8px; font-size:10px; color:var(--muted); }
+  @media print {
+    @page { size:A4; margin:8mm; }
+    body { padding:0; max-width:none; font-size:10px; }
+    h2 { margin-top:6px; }
+  }
+</style>
+</head>
+<body>
+<h1>Interest signals: Wikipedia attention by language</h1>
+
+<h2>What was analyzed</h2>
+<div>
+  Period <b>{{ r.scope.period.start }}</b> to <b>{{ r.scope.period.end }}</b> ({{ r.scope.period.months }} complete months).
+  Language editions: {{ r.scope.languages | join(", ") }}.
+  Traffic: human users (agent=user), all access, monthly; source: Wikimedia Analytics API.
+</div>
+<ul>
+{% for t in r.scope.topics %}
+  <li><b>{{ t.query }}</b>: {% for e in t.cluster %}{{ e.label }} ({{ e.key }}){% if not loop.last %}, {% endif %}{% endfor %}
+    {% if t.auto_selected %}<span class="muted">(auto-selected; check it is the intended article)</span>{% endif %}
+    {% set missing = t.coverage | selectattr("status", "equalto", "missing") | map(attribute="project") | list %}
+    {% if missing %}<span class="muted">No article in: {{ missing | join(", ") }}.</span>{% endif %}
+  </li>
+{% endfor %}
+</ul>
+
+<h2>Comparison</h2>
+<table>
+  <tr><th>Topic</th><th>Edition</th><th class="num">Views/month</th><th class="num">Per 1M views</th>
+      <th class="num">YoY (normalized)</th><th class="num">YoY (raw)</th><th class="num">Trend/year</th>
+      <th class="num">Rising windows</th><th class="num">Spikes</th><th>Evidence</th><th>Label</th>
+      {% if r.comparison.weighted %}<th class="num">Score*</th>{% endif %}</tr>
+  {% for row in rows %}
+  <tr>
+    <td>{{ row.topic }}</td><td>{{ row.project }}{% if row.pareto %} <span class="pareto" title="not dominated">●</span>{% endif %}</td>
+    <td class="num">{{ row.scale }}</td><td class="num">{{ row.relative }}</td>
+    <td class="num">{{ row.yoy }}</td><td class="num">{{ row.yoy_raw }}</td><td class="num">{{ row.trend }}</td>
+    <td class="num">{{ row.consistency }}</td><td class="num">{{ row.spikes }}</td>
+    <td>{{ row.evidence }}</td><td class="label">{{ row.label }}</td>
+    {% if r.comparison.weighted %}<td class="num">{{ row.score if row.score is not none else "n/a" }}</td>{% endif %}
+  </tr>
+  {% endfor %}
+</table>
+<div class="muted">● not dominated on scale, relative attention, normalized growth and consistency (Pareto front).
+{% if r.comparison.weighted %}* Score = your weights {{ r.comparison.weighted.weights }} over rank percentiles; it reflects your preferences, not an objective truth.{% endif %}</div>
+
+<h2>Why</h2>
+<ul>
+{% for row in rows %}<li>{{ row.rationale | join(" ") }}</li>{% endfor %}
+</ul>
+
+<h2>Charts</h2>
+<img src="{{ charts.relative_attention }}" alt="Relative attention per language">
+<img src="{{ charts.raw_views }}" alt="Monthly views per language">
+
+<h2>Warnings</h2>
+<ul class="warn">
+{% for w in warnings %}<li>[{{ w.code.value }}] {{ w.message }}</li>{% else %}<li class="muted">none</li>{% endfor %}
+{% if warnings_truncated %}<li class="muted">... {{ warnings_truncated }} more in analysis.json</li>{% endif %}
+</ul>
+
+<h2>Limitations</h2>
+<ul>{% for x in r.limitations %}<li>{{ x }}</li>{% endfor %}</ul>
+
+<footer>
+  Run {{ r.run_id }}{% if r.parent_run_id %} (follow-up of {{ r.parent_run_id }}){% endif %} ·
+  cache {{ r.cache.mode }}: {{ r.cache.hits }} hits, {{ r.cache.fetched }} fetched, {{ r.cache.http_requests }} HTTP requests
+  {% if r.cache.oldest_observation_fetched_at %}· oldest cached data {{ r.cache.oldest_observation_fetched_at[:10] }}{% endif %}
+  · interest-signals {{ r.tool_version }}, methodology {{ r.methodology_version }}
+</footer>
+</body>
+</html>

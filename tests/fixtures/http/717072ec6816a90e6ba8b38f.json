@@ -1,0 +1,5 @@
+{
+ "url": "https://pl.wikipedia.org/w/api.php?action=query&format=json&formatversion=2&ppprop=wikibase_item%7Cdisambiguation&prop=pageprops%7Cinfo%7Cdescription&redirects=1&titles=learning+English",
+ "status": 200,
+ "body": "{\"batchcomplete\":true,\"query\":{\"normalized\":[{\"fromencoded\":false,\"from\":\"learning English\",\"to\":\"Learning English\"}],\"pages\":[{\"ns\":0,\"title\":\"Learning English\",\"missing\":true,\"contentmodel\":\"wikitext\",\"pagelanguage\":\"pl\",\"pagelanguagehtmlcode\":\"pl\",\"pagelanguagedir\":\"ltr\"}]}}"
+}

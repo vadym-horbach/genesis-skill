@@ -1,0 +1,5 @@
+{
+ "url": "https://ja.wikipedia.org/w/api.php?action=query&format=json&formatversion=2&pageids=988027&prop=redirects&rdlimit=max&rdnamespace=0&rdprop=title",
+ "status": 200,
+ "body": "{\"batchcomplete\":true,\"query\":{\"pages\":[{\"pageid\":988027,\"ns\":0,\"title\":\"天文学\",\"redirects\":[{\"ns\":0,\"title\":\"星学\"},{\"ns\":0,\"title\":\"天文書\"},{\"ns\":0,\"title\":\"宇宙天文学\"},{\"ns\":0,\"title\":\"宇宙・天文学\"}]}]},\"limits\":{\"redirects\":500}}"
+}

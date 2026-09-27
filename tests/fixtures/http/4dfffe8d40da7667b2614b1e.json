@@ -1,0 +1,5 @@
+{
+ "url": "https://pl.wikipedia.org/w/api.php?action=query&format=json&formatversion=2&ppprop=wikibase_item%7Cdisambiguation&prop=pageprops%7Cinfo%7Cdescription&redirects=1&titles=Astronomia",
+ "status": 200,
+ "body": "{\"batchcomplete\":true,\"query\":{\"pages\":[{\"pageid\":2221092,\"ns\":0,\"title\":\"Astronomia\",\"pageprops\":{\"wikibase_item\":\"Q333\"},\"contentmodel\":\"wikitext\",\"pagelanguage\":\"pl\",\"pagelanguagehtmlcode\":\"pl\",\"pagelanguagedir\":\"ltr\",\"touched\":\"2026-09-22T07:53:08Z\",\"lastrevid\":78177175,\"length\":81021,\"description\":\"nauka przyrodnicza o ciałach niebieskich i zjawiskach pochodzenia pozaplanetarnego\",\"descriptionsource\":\"central\"}]}}"
+}

@@ -1,0 +1,5 @@
+{
+ "url": "https://cs.wikipedia.org/w/api.php?action=query&format=json&formatversion=2&ppprop=wikibase_item%7Cdisambiguation&prop=pageprops%7Cinfo%7Cdescription&redirects=1&titles=P%C5%99eru%C5%A1ovan%C3%BD+p%C5%AFst%7CP%C5%AFst",
+ "status": 200,
+ "body": "{\"batchcomplete\":true,\"query\":{\"pages\":[{\"pageid\":200131,\"ns\":0,\"title\":\"Půst\",\"pageprops\":{\"wikibase_item\":\"Q44602\"},\"contentmodel\":\"wikitext\",\"pagelanguage\":\"cs\",\"pagelanguagehtmlcode\":\"cs\",\"pagelanguagedir\":\"ltr\",\"touched\":\"2026-09-15T12:19:05Z\",\"lastrevid\":25802139,\"length\":12336,\"description\":\"lidské jednání zřeknutím se potravy ap.\",\"descriptionsource\":\"central\"},{\"pageid\":1632302,\"ns\":0,\"title\":\"Přerušovaný půst\",\"pageprops\":{\"wikibase_item\":\"Q1666254\"},\"contentmodel\":\"wikitext\",\"pagelanguage\":\"cs\",\"pagelanguagehtmlcode\":\"cs\",\"pagelanguagedir\":\"ltr\",\"touched\":\"2026-09-15T12:20:42Z\",\"lastrevid\":25947007,\"length\":7148}]}}"
+}

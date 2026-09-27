@@ -1,0 +1,5 @@
+{
+ "url": "https://ru.wikipedia.org/w/api.php?action=query&format=json&formatversion=2&ppprop=wikibase_item%7Cdisambiguation&prop=pageprops%7Cinfo%7Cdescription&redirects=1&titles=%D0%90%D1%81%D1%82%D1%80%D0%BE%D0%BD%D0%BE%D0%BC%D0%B8%D1%8F",
+ "status": 200,
+ "body": "{\"batchcomplete\":true,\"query\":{\"pages\":[{\"pageid\":588,\"ns\":0,\"title\":\"Астрономия\",\"pageprops\":{\"wikibase_item\":\"Q333\"},\"contentmodel\":\"wikitext\",\"pagelanguage\":\"ru\",\"pagelanguagehtmlcode\":\"ru\",\"pagelanguagedir\":\"ltr\",\"touched\":\"2026-09-26T14:32:14Z\",\"lastrevid\":155294217,\"length\":78722,\"description\":\"наука о Вселенной, изучающая расположение, движение, структуру, происхождение и развитие небесных тел и систем\",\"descriptionsource\":\"central\"}]}}"
+}

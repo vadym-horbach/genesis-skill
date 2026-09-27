@@ -1,0 +1,5 @@
+{
+ "url": "https://en.wikipedia.org/w/api.php?action=query&format=json&formatversion=2&pageids=50650&prop=redirects&rdlimit=max&rdnamespace=0&rdprop=title",
+ "status": 200,
+ "body": "{\"batchcomplete\":true,\"query\":{\"pages\":[{\"pageid\":50650,\"ns\":0,\"title\":\"Astronomy\",\"redirects\":[{\"ns\":0,\"title\":\"Stellar astronomy\"},{\"ns\":0,\"title\":\"Astronomical\"},{\"ns\":0,\"title\":\"Astronomic\"},{\"ns\":0,\"title\":\"Space stuff\"},{\"ns\":0,\"title\":\"Stars and Planets\"},{\"ns\":0,\"title\":\"Space astronomy\"},{\"ns\":0,\"title\":\"Department of Astronomy\"}]}]},\"limits\":{\"redirects\":500}}"
+}

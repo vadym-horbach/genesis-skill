@@ -1,0 +1,5 @@
+{
+ "url": "https://en.wikipedia.org/w/api.php?action=query&format=json&formatversion=2&ppprop=wikibase_item%7Cdisambiguation&prop=pageprops%7Cinfo%7Cdescription&redirects=1&titles=intermittent+fasting",
+ "status": 200,
+ "body": "{\"batchcomplete\":true,\"query\":{\"normalized\":[{\"fromencoded\":false,\"from\":\"intermittent fasting\",\"to\":\"Intermittent fasting\"}],\"pages\":[{\"pageid\":20104879,\"ns\":0,\"title\":\"Intermittent fasting\",\"pageprops\":{\"wikibase_item\":\"Q1666254\"},\"contentmodel\":\"wikitext\",\"pagelanguage\":\"en\",\"pagelanguagehtmlcode\":\"en\",\"pagelanguagedir\":\"ltr\",\"touched\":\"2026-09-27T18:20:49Z\",\"lastrevid\":1375033367,\"length\":67476,\"description\":\"Various systems to schedule meals\",\"descriptionsource\":\"local\"}]}}"
+}

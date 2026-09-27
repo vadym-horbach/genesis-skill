@@ -1,0 +1,5 @@
+{
+ "url": "https://cs.wikipedia.org/w/api.php?action=query&format=json&formatversion=2&pageids=720170&prop=revisions&rvdir=newer&rvlimit=1&rvprop=timestamp",
+ "status": 200,
+ "body": "{\"continue\":{\"rvcontinue\":\"20110912122346|7379254\",\"continue\":\"||\"},\"query\":{\"pages\":[{\"pageid\":720170,\"ns\":0,\"title\":\"Ketogenní dieta\",\"revisions\":[{\"timestamp\":\"2011-09-12T09:14:28Z\"}]}]}}"
+}

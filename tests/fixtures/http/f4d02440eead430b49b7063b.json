@@ -1,0 +1,5 @@
+{
+ "url": "https://pt.wikipedia.org/w/api.php?action=query&format=json&formatversion=2&pageids=220&prop=revisions&rvdir=newer&rvlimit=1&rvprop=timestamp",
+ "status": 200,
+ "body": "{\"continue\":{\"rvcontinue\":\"20030827214216|171\",\"continue\":\"||\"},\"query\":{\"pages\":[{\"pageid\":220,\"ns\":0,\"title\":\"Astronomia\",\"revisions\":[{\"timestamp\":\"2003-08-05T20:39:52Z\"}]}]}}"
+}
